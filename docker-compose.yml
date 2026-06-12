@@ -1,0 +1,152 @@
+# Shared config block for both Airflow services (webserver + scheduler).
+# The & anchor lets us define it once and reference it with *.
+x-airflow-common: &airflow-common
+  build:
+    context: ./airflow
+    dockerfile: Dockerfile
+  environment: &airflow-common-env
+    # Use LocalExecutor so tasks run as subprocesses on the scheduler (no Celery needed)
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    # Airflow metadata DB — separate 'airflow' database on the same postgres service
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://procureiq:${POSTGRES_PASSWORD}@postgres/airflow
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'procureiq_local_secret'
+    # App DB URL — used by ingestion, ML, and LLM scripts
+    PROCUREIQ_DB_URL: postgresql+psycopg2://procureiq:${POSTGRES_PASSWORD}@postgres/procureiq
+    # LLM provider config — passed through from .env
+    LLM_PROVIDER: ${LLM_PROVIDER:-groq}
+    GROQ_API_KEY: ${GROQ_API_KEY:-}
+    OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+    CLAUDE_API_KEY: ${CLAUDE_API_KEY:-}
+  volumes:
+    # DAGs live here — Airflow watches this directory for changes
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/logs:/opt/airflow/logs
+    # Project modules mounted into the container so DAG tasks can import them
+    - ./dbt_project:/opt/dbt
+    - ./ml:/opt/ml
+    - ./llm:/opt/llm
+    - ./ingestion:/opt/ingestion
+    - ./data:/opt/data
+  networks:
+    - procureiq_net
+  depends_on:
+    postgres:
+      condition: service_healthy
+
+services:
+
+  # ── Postgres ──────────────────────────────────────────────────────────────
+  # Hosts two databases:
+  #   procureiq → app data (raw + warehouse schemas)
+  #   airflow   → Airflow metadata (created by init_airflow.sql)
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: procureiq
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: procureiq
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Init scripts run in filename order on first startup only
+      - ./init_airflow.sql:/docker-entrypoint-initdb.d/00_init_airflow.sql
+      - ./init_db.sql:/docker-entrypoint-initdb.d/01_init_db.sql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "procureiq"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - procureiq_net
+
+  # ── Airflow Init ──────────────────────────────────────────────────────────
+  # One-shot container: migrates the Airflow DB and creates the admin user.
+  # Runs before webserver/scheduler start (service_completed_successfully).
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        airflow db migrate
+        airflow users create \
+          --username admin \
+          --firstname Admin \
+          --lastname User \
+          --role Admin \
+          --email admin@procureiq.local \
+          --password admin
+    restart: on-failure
+
+  # ── Airflow Webserver ──────────────────────────────────────────────────────
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+  # ── Airflow Scheduler ─────────────────────────────────────────────────────
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+  # ── MLflow ────────────────────────────────────────────────────────────────
+  # Tracks ML experiments and serves the model registry.
+  # SQLite backend at /mlflow/mlruns.db inside the named volume.
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.12.2
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:///mlflow/mlruns.db
+      --default-artifact-root /mlflow/artifacts
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_data:/mlflow
+    networks:
+      - procureiq_net
+
+  # ── Streamlit ─────────────────────────────────────────────────────────────
+  streamlit:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      PROCUREIQ_DB_URL: postgresql+psycopg2://procureiq:${POSTGRES_PASSWORD}@postgres/procureiq
+    volumes:
+      # Live-reload: edits to frontend/ reflect immediately without rebuild
+      - ./frontend:/app
+    networks:
+      - procureiq_net
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+networks:
+  procureiq_net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  mlflow_data:
