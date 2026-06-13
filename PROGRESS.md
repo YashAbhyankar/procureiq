@@ -36,12 +36,16 @@ Verification:
 
 ---
 
-## Phase 2 — Data Generation & Ingestion ⏳ PENDING
+## Phase 2 — Data Generation & Ingestion ✅ DONE
 **Goal:** Synthetic data in raw Postgres tables
 
-- [ ] `ingestion/generate_data.py`
-- [ ] `ingestion/load_raw.py`
-- [ ] `make seed` runs cleanly
+- [x] `ingestion/generate_data.py`
+- [x] `ingestion/load_raw.py`
+- [x] Load verified: 500 vendors, 10,000 POs, 12,000 invoices, 10,093 payments (~505 anomalous)
+
+**Notes:**
+- Payments landed at 10,093 (not 11,000) — some vendors had too few invoices to fill anomaly batches; anomaly rate still ~5%
+- 3 anomaly types injected: velocity spike (15 vendors), round-number fraud (180 payments), dormant-then-burst (20 vendors)
 
 ---
 
