@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw procurement data loaded from CSVs by ingestion/load_raw.py"
+    tables:
+      - name: vendors
+        description: "Vendor master — 500 vendors across 8 categories and 3 credit tiers"
+
+      - name: purchase_orders
+        description: "Purchase orders raised against vendors"
+
+      - name: invoices
+        description: "Invoices raised against purchase orders (net-30 payment terms)"
+
+      - name: payments
+        description: "Vendor payments — includes ~5% injected anomalies"
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after:  { count: 24, period: hour }
+          error_after: { count: 48, period: hour }

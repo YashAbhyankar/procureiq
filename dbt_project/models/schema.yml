@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: stg_vendors
+    description: "Cleaned vendor master — one row per vendor"
+    columns:
+      - name: vendor_id
+        tests: [unique, not_null]
+      - name: credit_tier
+        tests:
+          - accepted_values:
+              values: ['A', 'B', 'C']
+      - name: category
+        tests: [not_null]
+
+  - name: stg_purchase_orders
+    description: "Cleaned purchase orders"
+    columns:
+      - name: po_id
+        tests: [unique, not_null]
+      - name: vendor_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_vendors')
+              field: vendor_id
+
+  - name: stg_invoices
+    description: "Cleaned invoices with net-30 due dates"
+    columns:
+      - name: invoice_id
+        tests: [unique, not_null]
+      - name: vendor_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_vendors')
+              field: vendor_id
+
+  - name: stg_payments
+    description: "Cleaned payments — includes injected anomalies"
+    columns:
+      - name: payment_id
+        tests: [unique, not_null]
+      - name: vendor_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_vendors')
+              field: vendor_id
+
+  - name: int_vendor_payment_joined
+    description: "Payment-level grain with invoice context and days_late"
+    columns:
+      - name: payment_id
+        tests: [unique, not_null]
+
+  - name: int_vendor_payment_stats
+    description: "Per-vendor aggregate features for ML training"
+    columns:
+      - name: vendor_id
+        tests: [unique, not_null]
+
+  - name: vendor_risk_summary
+    description: "One row per vendor — dbt features + ML scores (NULL until score.py runs)"
+    columns:
+      - name: vendor_id
+        tests: [unique, not_null]

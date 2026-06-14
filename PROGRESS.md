@@ -49,14 +49,17 @@ Verification:
 
 ---
 
-## Phase 3 — dbt Project ⏳ PENDING
+## Phase 3 — dbt Project ✅ DONE
 **Goal:** `dbt run && dbt test` — all green
 
-- [ ] Staging models (4 files)
-- [ ] Intermediate models (2 files)
-- [ ] Mart models (2 files)
-- [ ] schema.yml tests
-- [ ] Macro
+- [x] Staging models: stg_vendors, stg_purchase_orders, stg_invoices, stg_payments
+- [x] Intermediate models: int_vendor_payment_joined, int_vendor_payment_stats
+- [x] Mart models: vendor_risk_summary, payment_anomaly_flags
+- [x] schema.yml — 22 tests (unique, not_null, relationships, accepted_values)
+- [x] Macro: calculate_days_late
+- [x] Singular test: assert_days_late_in_range (severity=warn)
+
+Result: PASS=22 WARN=1 ERROR=0 — warning is expected (175 dormant-then-burst anomalies with days_late > 365)
 
 ---
 

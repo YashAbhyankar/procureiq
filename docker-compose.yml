@@ -16,6 +16,8 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__SECRET_KEY: 'procureiq_local_secret'
     # App DB URL — used by ingestion, ML, and LLM scripts
     PROCUREIQ_DB_URL: postgresql+psycopg2://procureiq:${POSTGRES_PASSWORD}@postgres/procureiq
+    # Needed by dbt profiles.yml ({{ env_var('POSTGRES_PASSWORD') }})
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     # LLM provider config — passed through from .env
     LLM_PROVIDER: ${LLM_PROVIDER:-groq}
     GROQ_API_KEY: ${GROQ_API_KEY:-}

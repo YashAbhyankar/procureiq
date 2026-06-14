@@ -1,0 +1,12 @@
+procureiq:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres                              # Docker service name, resolves on procureiq_net
+      user: procureiq
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      port: 5432
+      dbname: procureiq
+      schema: warehouse                           # all models land in warehouse.*
+      threads: 4

@@ -1,0 +1,23 @@
+name: procureiq
+version: '1.0.0'
+config-version: 2
+
+profile: procureiq
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths:  ["tests"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  procureiq:
+    staging:
+      +materialized: view       # fast, no storage cost, always fresh
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table      # ML layer needs stable tables it can UPDATE in place

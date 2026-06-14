@@ -1,0 +1,1760 @@
+[0m13:11:04.152267 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df1ab2d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df171450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df7ee250>]}
+
+
+============================== 13:11:04.195643 | 5fc241e7-76cd-4a8b-9ad3-202950638467 ==============================
+[0m13:11:04.195643 [info ] [MainThread]: Running with dbt=1.7.4
+[0m13:11:04.200576 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/dbt', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/opt/dbt/logs', 'debug': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --project-dir /opt/dbt --profiles-dir /opt/dbt', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m13:11:04.561319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df21c510>]}
+[0m13:11:04.708128 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df21cd90>]}
+[0m13:11:04.711654 [info ] [MainThread]: Registered adapter: postgres=1.7.4
+[0m13:11:04.723825 [debug] [MainThread]: checksum: 248e8aba381ba2d577dce7ab50d2010c2aac45d2b27e6e6214cdd96d2d41fabc, vars: {}, profile: , target: , version: 1.7.4
+[0m13:11:04.738894 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m13:11:04.741382 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df08ba50>]}
+[0m13:11:06.303555 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd7b6f50>]}
+[0m13:11:06.418260 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd39aa90>]}
+[0m13:11:06.422289 [info ] [MainThread]: Found 8 models, 23 tests, 4 sources, 0 exposures, 0 metrics, 402 macros, 0 groups, 0 semantic models
+[0m13:11:06.426750 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd7bce90>]}
+[0m13:11:06.437733 [info ] [MainThread]: 
+[0m13:11:06.443352 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m13:11:06.448976 [debug] [ThreadPool]: Acquiring new postgres connection 'list_procureiq'
+[0m13:11:06.462746 [debug] [ThreadPool]: Using postgres connection "list_procureiq"
+[0m13:11:06.465028 [debug] [ThreadPool]: On list_procureiq: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "connection_name": "list_procureiq"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m13:11:06.466933 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:11:06.481603 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.0 seconds
+[0m13:11:06.484891 [debug] [ThreadPool]: On list_procureiq: Close
+[0m13:11:06.489465 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_procureiq, now list_procureiq_warehouse)
+[0m13:11:06.499909 [debug] [ThreadPool]: Using postgres connection "list_procureiq_warehouse"
+[0m13:11:06.502580 [debug] [ThreadPool]: On list_procureiq_warehouse: BEGIN
+[0m13:11:06.505062 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:11:06.513472 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:06.515931 [debug] [ThreadPool]: Using postgres connection "list_procureiq_warehouse"
+[0m13:11:06.518185 [debug] [ThreadPool]: On list_procureiq_warehouse: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "connection_name": "list_procureiq_warehouse"} */
+select
+      'procureiq' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'warehouse'
+    union all
+    select
+      'procureiq' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'warehouse'
+    union all
+    select
+      'procureiq' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'warehouse'
+  
+[0m13:11:06.533071 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m13:11:06.536866 [debug] [ThreadPool]: On list_procureiq_warehouse: ROLLBACK
+[0m13:11:06.539363 [debug] [ThreadPool]: On list_procureiq_warehouse: Close
+[0m13:11:06.546707 [debug] [MainThread]: Using postgres connection "master"
+[0m13:11:06.548967 [debug] [MainThread]: On master: BEGIN
+[0m13:11:06.552488 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:11:06.564597 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:06.568756 [debug] [MainThread]: Using postgres connection "master"
+[0m13:11:06.572415 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m13:11:06.594331 [debug] [MainThread]: SQL status: SELECT 0 in 0.0 seconds
+[0m13:11:06.600555 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd7817d0>]}
+[0m13:11:06.604950 [debug] [MainThread]: On master: ROLLBACK
+[0m13:11:06.610037 [debug] [MainThread]: Using postgres connection "master"
+[0m13:11:06.613599 [debug] [MainThread]: On master: BEGIN
+[0m13:11:06.617880 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:06.622366 [debug] [MainThread]: On master: COMMIT
+[0m13:11:06.626075 [debug] [MainThread]: Using postgres connection "master"
+[0m13:11:06.629475 [debug] [MainThread]: On master: COMMIT
+[0m13:11:06.634084 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:06.638616 [debug] [MainThread]: On master: Close
+[0m13:11:06.643626 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:11:06.648099 [info ] [MainThread]: 
+[0m13:11:06.670649 [debug] [Thread-1 (]: Began running node model.procureiq.stg_invoices
+[0m13:11:06.671552 [debug] [Thread-2 (]: Began running node model.procureiq.stg_payments
+[0m13:11:06.673219 [debug] [Thread-3 (]: Began running node model.procureiq.stg_purchase_orders
+[0m13:11:06.675764 [debug] [Thread-4 (]: Began running node model.procureiq.stg_vendors
+[0m13:11:06.678690 [info ] [Thread-1 (]: 1 of 8 START sql view model warehouse.stg_invoices ............................. [RUN]
+[0m13:11:06.684854 [info ] [Thread-2 (]: 2 of 8 START sql view model warehouse.stg_payments ............................. [RUN]
+[0m13:11:06.688824 [info ] [Thread-3 (]: 3 of 8 START sql view model warehouse.stg_purchase_orders ...................... [RUN]
+[0m13:11:06.692108 [info ] [Thread-4 (]: 4 of 8 START sql view model warehouse.stg_vendors .............................. [RUN]
+[0m13:11:06.696433 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_procureiq_warehouse, now model.procureiq.stg_invoices)
+[0m13:11:06.701859 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.procureiq.stg_payments'
+[0m13:11:06.705460 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.procureiq.stg_purchase_orders'
+[0m13:11:06.712673 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.procureiq.stg_vendors'
+[0m13:11:06.717236 [debug] [Thread-1 (]: Began compiling node model.procureiq.stg_invoices
+[0m13:11:06.720488 [debug] [Thread-2 (]: Began compiling node model.procureiq.stg_payments
+[0m13:11:06.723521 [debug] [Thread-3 (]: Began compiling node model.procureiq.stg_purchase_orders
+[0m13:11:06.728418 [debug] [Thread-4 (]: Began compiling node model.procureiq.stg_vendors
+[0m13:11:06.746276 [debug] [Thread-1 (]: Writing injected SQL for node "model.procureiq.stg_invoices"
+[0m13:11:06.752256 [debug] [Thread-2 (]: Writing injected SQL for node "model.procureiq.stg_payments"
+[0m13:11:06.757301 [debug] [Thread-3 (]: Writing injected SQL for node "model.procureiq.stg_purchase_orders"
+[0m13:11:06.764838 [debug] [Thread-4 (]: Writing injected SQL for node "model.procureiq.stg_vendors"
+[0m13:11:06.806293 [debug] [Thread-1 (]: Timing info for model.procureiq.stg_invoices (compile): 13:11:06.733548 => 13:11:06.805682
+[0m13:11:06.810000 [debug] [Thread-1 (]: Began executing node model.procureiq.stg_invoices
+[0m13:11:06.815499 [debug] [Thread-4 (]: Timing info for model.procureiq.stg_vendors (compile): 13:11:06.760229 => 13:11:06.814654
+[0m13:11:06.852206 [debug] [Thread-4 (]: Began executing node model.procureiq.stg_vendors
+[0m13:11:06.873257 [debug] [Thread-3 (]: Timing info for model.procureiq.stg_purchase_orders (compile): 13:11:06.754554 => 13:11:06.872251
+[0m13:11:06.880990 [debug] [Thread-1 (]: Writing runtime sql for node "model.procureiq.stg_invoices"
+[0m13:11:06.885671 [debug] [Thread-4 (]: Writing runtime sql for node "model.procureiq.stg_vendors"
+[0m13:11:06.888075 [debug] [Thread-3 (]: Began executing node model.procureiq.stg_purchase_orders
+[0m13:11:06.888953 [debug] [Thread-2 (]: Timing info for model.procureiq.stg_payments (compile): 13:11:06.748981 => 13:11:06.888434
+[0m13:11:06.897253 [debug] [Thread-3 (]: Writing runtime sql for node "model.procureiq.stg_purchase_orders"
+[0m13:11:06.899608 [debug] [Thread-2 (]: Began executing node model.procureiq.stg_payments
+[0m13:11:06.907968 [debug] [Thread-2 (]: Writing runtime sql for node "model.procureiq.stg_payments"
+[0m13:11:06.937004 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.stg_vendors"
+[0m13:11:06.939912 [debug] [Thread-4 (]: On model.procureiq.stg_vendors: BEGIN
+[0m13:11:06.943099 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m13:11:06.944314 [debug] [Thread-3 (]: Using postgres connection "model.procureiq.stg_purchase_orders"
+[0m13:11:06.949846 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.stg_invoices"
+[0m13:11:06.950820 [debug] [Thread-3 (]: On model.procureiq.stg_purchase_orders: BEGIN
+[0m13:11:06.953424 [debug] [Thread-1 (]: On model.procureiq.stg_invoices: BEGIN
+[0m13:11:06.955457 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.stg_payments"
+[0m13:11:06.958005 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m13:11:06.959554 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:06.962619 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:11:06.966070 [debug] [Thread-2 (]: On model.procureiq.stg_payments: BEGIN
+[0m13:11:06.971177 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.stg_vendors"
+[0m13:11:06.976543 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m13:11:06.978828 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:06.980611 [debug] [Thread-4 (]: On model.procureiq.stg_vendors: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_vendors"} */
+
+  create view "procureiq"."warehouse"."stg_vendors__dbt_tmp"
+    
+    
+  as (
+    SELECT
+    vendor_id,
+    vendor_name,
+    category,
+    credit_tier,
+    registration_date::DATE         AS registration_date,
+    is_active::BOOLEAN              AS is_active,
+    contact_email,
+    loaded_at::TIMESTAMP            AS loaded_at
+FROM "procureiq"."raw"."vendors"
+  );
+[0m13:11:06.984073 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:06.986007 [debug] [Thread-3 (]: Using postgres connection "model.procureiq.stg_purchase_orders"
+[0m13:11:06.991169 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.stg_invoices"
+[0m13:11:06.992936 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:06.995318 [debug] [Thread-3 (]: On model.procureiq.stg_purchase_orders: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_purchase_orders"} */
+
+  create view "procureiq"."warehouse"."stg_purchase_orders__dbt_tmp"
+    
+    
+  as (
+    SELECT
+    po_id,
+    vendor_id,
+    po_date::DATE           AS po_date,
+    total_amount::NUMERIC   AS total_amount,
+    status,
+    department,
+    loaded_at::TIMESTAMP    AS loaded_at
+FROM "procureiq"."raw"."purchase_orders"
+  );
+[0m13:11:06.998357 [debug] [Thread-1 (]: On model.procureiq.stg_invoices: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_invoices"} */
+
+  create view "procureiq"."warehouse"."stg_invoices__dbt_tmp"
+    
+    
+  as (
+    SELECT
+    invoice_id,
+    po_id,
+    vendor_id,
+    invoice_date::DATE      AS invoice_date,
+    amount::NUMERIC         AS amount,
+    due_date::DATE          AS due_date,
+    status,
+    loaded_at::TIMESTAMP    AS loaded_at
+FROM "procureiq"."raw"."invoices"
+  );
+[0m13:11:07.001340 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.stg_payments"
+[0m13:11:07.006270 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m13:11:07.007588 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m13:11:07.009766 [debug] [Thread-2 (]: On model.procureiq.stg_payments: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_payments"} */
+
+  create view "procureiq"."warehouse"."stg_payments__dbt_tmp"
+    
+    
+  as (
+    SELECT
+    payment_id,
+    invoice_id,
+    vendor_id,
+    payment_date::DATE      AS payment_date,
+    amount::NUMERIC         AS amount,
+    is_disputed::BOOLEAN    AS is_disputed,
+    loaded_at::TIMESTAMP    AS loaded_at
+FROM "procureiq"."raw"."payments"
+  );
+[0m13:11:07.010713 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m13:11:07.021185 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.stg_vendors"
+[0m13:11:07.025695 [debug] [Thread-3 (]: Using postgres connection "model.procureiq.stg_purchase_orders"
+[0m13:11:07.031054 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m13:11:07.034430 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.stg_invoices"
+[0m13:11:07.037686 [debug] [Thread-4 (]: On model.procureiq.stg_vendors: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_vendors"} */
+alter table "procureiq"."warehouse"."stg_vendors__dbt_tmp" rename to "stg_vendors"
+[0m13:11:07.041391 [debug] [Thread-3 (]: On model.procureiq.stg_purchase_orders: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_purchase_orders"} */
+alter table "procureiq"."warehouse"."stg_purchase_orders__dbt_tmp" rename to "stg_purchase_orders"
+[0m13:11:07.049524 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.stg_payments"
+[0m13:11:07.053329 [debug] [Thread-1 (]: On model.procureiq.stg_invoices: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_invoices"} */
+alter table "procureiq"."warehouse"."stg_invoices__dbt_tmp" rename to "stg_invoices"
+[0m13:11:07.057810 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.060183 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.062899 [debug] [Thread-2 (]: On model.procureiq.stg_payments: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_payments"} */
+alter table "procureiq"."warehouse"."stg_payments__dbt_tmp" rename to "stg_payments"
+[0m13:11:07.067259 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.093062 [debug] [Thread-4 (]: On model.procureiq.stg_vendors: COMMIT
+[0m13:11:07.095955 [debug] [Thread-3 (]: On model.procureiq.stg_purchase_orders: COMMIT
+[0m13:11:07.100789 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.105941 [debug] [Thread-1 (]: On model.procureiq.stg_invoices: COMMIT
+[0m13:11:07.110302 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.stg_vendors"
+[0m13:11:07.114715 [debug] [Thread-3 (]: Using postgres connection "model.procureiq.stg_purchase_orders"
+[0m13:11:07.123010 [debug] [Thread-2 (]: On model.procureiq.stg_payments: COMMIT
+[0m13:11:07.127441 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.stg_invoices"
+[0m13:11:07.133347 [debug] [Thread-4 (]: On model.procureiq.stg_vendors: COMMIT
+[0m13:11:07.137809 [debug] [Thread-3 (]: On model.procureiq.stg_purchase_orders: COMMIT
+[0m13:11:07.143186 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.stg_payments"
+[0m13:11:07.148189 [debug] [Thread-1 (]: On model.procureiq.stg_invoices: COMMIT
+[0m13:11:07.154931 [debug] [Thread-4 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:07.156928 [debug] [Thread-3 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:07.157701 [debug] [Thread-2 (]: On model.procureiq.stg_payments: COMMIT
+[0m13:11:07.162889 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:07.172988 [debug] [Thread-4 (]: Applying DROP to: "procureiq"."warehouse"."stg_vendors__dbt_backup"
+[0m13:11:07.178791 [debug] [Thread-3 (]: Applying DROP to: "procureiq"."warehouse"."stg_purchase_orders__dbt_backup"
+[0m13:11:07.184544 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:07.188094 [debug] [Thread-1 (]: Applying DROP to: "procureiq"."warehouse"."stg_invoices__dbt_backup"
+[0m13:11:07.204265 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.stg_vendors"
+[0m13:11:07.207937 [debug] [Thread-3 (]: Using postgres connection "model.procureiq.stg_purchase_orders"
+[0m13:11:07.218803 [debug] [Thread-2 (]: Applying DROP to: "procureiq"."warehouse"."stg_payments__dbt_backup"
+[0m13:11:07.224202 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.stg_invoices"
+[0m13:11:07.231511 [debug] [Thread-4 (]: On model.procureiq.stg_vendors: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_vendors"} */
+drop view if exists "procureiq"."warehouse"."stg_vendors__dbt_backup" cascade
+[0m13:11:07.237217 [debug] [Thread-3 (]: On model.procureiq.stg_purchase_orders: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_purchase_orders"} */
+drop view if exists "procureiq"."warehouse"."stg_purchase_orders__dbt_backup" cascade
+[0m13:11:07.243692 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.stg_payments"
+[0m13:11:07.249751 [debug] [Thread-1 (]: On model.procureiq.stg_invoices: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_invoices"} */
+drop view if exists "procureiq"."warehouse"."stg_invoices__dbt_backup" cascade
+[0m13:11:07.257978 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m13:11:07.261517 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m13:11:07.265291 [debug] [Thread-2 (]: On model.procureiq.stg_payments: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.stg_payments"} */
+drop view if exists "procureiq"."warehouse"."stg_payments__dbt_backup" cascade
+[0m13:11:07.271711 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m13:11:07.276881 [debug] [Thread-4 (]: Timing info for model.procureiq.stg_vendors (execute): 13:11:06.881541 => 13:11:07.276520
+[0m13:11:07.282183 [debug] [Thread-3 (]: Timing info for model.procureiq.stg_purchase_orders (execute): 13:11:06.893729 => 13:11:07.281850
+[0m13:11:07.285684 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m13:11:07.289364 [debug] [Thread-1 (]: Timing info for model.procureiq.stg_invoices (execute): 13:11:06.816242 => 13:11:07.289021
+[0m13:11:07.292246 [debug] [Thread-4 (]: On model.procureiq.stg_vendors: Close
+[0m13:11:07.294867 [debug] [Thread-3 (]: On model.procureiq.stg_purchase_orders: Close
+[0m13:11:07.299034 [debug] [Thread-2 (]: Timing info for model.procureiq.stg_payments (execute): 13:11:06.903501 => 13:11:07.298780
+[0m13:11:07.301670 [debug] [Thread-1 (]: On model.procureiq.stg_invoices: Close
+[0m13:11:07.305012 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dcfe0350>]}
+[0m13:11:07.307307 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd389cd0>]}
+[0m13:11:07.308992 [debug] [Thread-2 (]: On model.procureiq.stg_payments: Close
+[0m13:11:07.311902 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd388b50>]}
+[0m13:11:07.314129 [info ] [Thread-4 (]: 4 of 8 OK created sql view model warehouse.stg_vendors ......................... [[32mCREATE VIEW[0m in 0.59s]
+[0m13:11:07.316940 [info ] [Thread-3 (]: 3 of 8 OK created sql view model warehouse.stg_purchase_orders ................. [[32mCREATE VIEW[0m in 0.60s]
+[0m13:11:07.321237 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd389050>]}
+[0m13:11:07.323464 [info ] [Thread-1 (]: 1 of 8 OK created sql view model warehouse.stg_invoices ........................ [[32mCREATE VIEW[0m in 0.62s]
+[0m13:11:07.326278 [debug] [Thread-4 (]: Finished running node model.procureiq.stg_vendors
+[0m13:11:07.329468 [debug] [Thread-3 (]: Finished running node model.procureiq.stg_purchase_orders
+[0m13:11:07.333231 [info ] [Thread-2 (]: 2 of 8 OK created sql view model warehouse.stg_payments ........................ [[32mCREATE VIEW[0m in 0.62s]
+[0m13:11:07.337770 [debug] [Thread-1 (]: Finished running node model.procureiq.stg_invoices
+[0m13:11:07.348266 [debug] [Thread-2 (]: Finished running node model.procureiq.stg_payments
+[0m13:11:07.355604 [debug] [Thread-4 (]: Began running node model.procureiq.int_vendor_payment_joined
+[0m13:11:07.361515 [info ] [Thread-4 (]: 5 of 8 START sql view model warehouse.int_vendor_payment_joined ................ [RUN]
+[0m13:11:07.365051 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.procureiq.stg_vendors, now model.procureiq.int_vendor_payment_joined)
+[0m13:11:07.367089 [debug] [Thread-4 (]: Began compiling node model.procureiq.int_vendor_payment_joined
+[0m13:11:07.372029 [debug] [Thread-4 (]: Writing injected SQL for node "model.procureiq.int_vendor_payment_joined"
+[0m13:11:07.405266 [debug] [Thread-4 (]: Timing info for model.procureiq.int_vendor_payment_joined (compile): 13:11:07.368897 => 13:11:07.404674
+[0m13:11:07.407745 [debug] [Thread-4 (]: Began executing node model.procureiq.int_vendor_payment_joined
+[0m13:11:07.416557 [debug] [Thread-4 (]: Writing runtime sql for node "model.procureiq.int_vendor_payment_joined"
+[0m13:11:07.441315 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.int_vendor_payment_joined"
+[0m13:11:07.442985 [debug] [Thread-4 (]: On model.procureiq.int_vendor_payment_joined: BEGIN
+[0m13:11:07.444870 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:11:07.452984 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:07.455387 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.int_vendor_payment_joined"
+[0m13:11:07.457463 [debug] [Thread-4 (]: On model.procureiq.int_vendor_payment_joined: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.int_vendor_payment_joined"} */
+
+  create view "procureiq"."warehouse"."int_vendor_payment_joined__dbt_tmp"
+    
+    
+  as (
+    -- Payment-level grain, enriched with invoice context.
+-- Joining here (not in staging) because days_late requires both
+-- payment_date (payments table) and due_date (invoices table).
+SELECT
+    p.payment_id,
+    p.vendor_id,
+    p.invoice_id,
+    p.payment_date,
+    p.amount,
+    p.is_disputed,
+    i.due_date,
+    i.invoice_date,
+    i.status                                            AS invoice_status,
+    
+    (p.payment_date::DATE - i.due_date::DATE)
+  AS days_late,
+    p.amount / NULLIF(i.amount, 0)                     AS payment_to_invoice_ratio
+FROM "procureiq"."warehouse"."stg_payments" p
+LEFT JOIN "procureiq"."warehouse"."stg_invoices" i USING (invoice_id)
+  );
+[0m13:11:07.466455 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m13:11:07.472040 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.int_vendor_payment_joined"
+[0m13:11:07.473706 [debug] [Thread-4 (]: On model.procureiq.int_vendor_payment_joined: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.int_vendor_payment_joined"} */
+alter table "procureiq"."warehouse"."int_vendor_payment_joined__dbt_tmp" rename to "int_vendor_payment_joined"
+[0m13:11:07.475751 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.478283 [debug] [Thread-4 (]: On model.procureiq.int_vendor_payment_joined: COMMIT
+[0m13:11:07.479665 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.int_vendor_payment_joined"
+[0m13:11:07.480911 [debug] [Thread-4 (]: On model.procureiq.int_vendor_payment_joined: COMMIT
+[0m13:11:07.483762 [debug] [Thread-4 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:07.486922 [debug] [Thread-4 (]: Applying DROP to: "procureiq"."warehouse"."int_vendor_payment_joined__dbt_backup"
+[0m13:11:07.488537 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.int_vendor_payment_joined"
+[0m13:11:07.489774 [debug] [Thread-4 (]: On model.procureiq.int_vendor_payment_joined: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.int_vendor_payment_joined"} */
+drop view if exists "procureiq"."warehouse"."int_vendor_payment_joined__dbt_backup" cascade
+[0m13:11:07.491463 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m13:11:07.493753 [debug] [Thread-4 (]: Timing info for model.procureiq.int_vendor_payment_joined (execute): 13:11:07.409970 => 13:11:07.493560
+[0m13:11:07.495470 [debug] [Thread-4 (]: On model.procureiq.int_vendor_payment_joined: Close
+[0m13:11:07.497285 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263ddf39c10>]}
+[0m13:11:07.499313 [info ] [Thread-4 (]: 5 of 8 OK created sql view model warehouse.int_vendor_payment_joined ........... [[32mCREATE VIEW[0m in 0.13s]
+[0m13:11:07.501216 [debug] [Thread-4 (]: Finished running node model.procureiq.int_vendor_payment_joined
+[0m13:11:07.503627 [debug] [Thread-1 (]: Began running node model.procureiq.int_vendor_payment_stats
+[0m13:11:07.504052 [debug] [Thread-2 (]: Began running node model.procureiq.payment_anomaly_flags
+[0m13:11:07.505123 [info ] [Thread-1 (]: 6 of 8 START sql view model warehouse.int_vendor_payment_stats ................. [RUN]
+[0m13:11:07.507755 [info ] [Thread-2 (]: 7 of 8 START sql table model warehouse.payment_anomaly_flags ................... [RUN]
+[0m13:11:07.511339 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.procureiq.stg_invoices, now model.procureiq.int_vendor_payment_stats)
+[0m13:11:07.515497 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.procureiq.stg_payments, now model.procureiq.payment_anomaly_flags)
+[0m13:11:07.517433 [debug] [Thread-1 (]: Began compiling node model.procureiq.int_vendor_payment_stats
+[0m13:11:07.521543 [debug] [Thread-2 (]: Began compiling node model.procureiq.payment_anomaly_flags
+[0m13:11:07.528831 [debug] [Thread-1 (]: Writing injected SQL for node "model.procureiq.int_vendor_payment_stats"
+[0m13:11:07.539724 [debug] [Thread-2 (]: Writing injected SQL for node "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.572576 [debug] [Thread-2 (]: Timing info for model.procureiq.payment_anomaly_flags (compile): 13:11:07.533635 => 13:11:07.572181
+[0m13:11:07.574742 [debug] [Thread-1 (]: Timing info for model.procureiq.int_vendor_payment_stats (compile): 13:11:07.524140 => 13:11:07.574104
+[0m13:11:07.576154 [debug] [Thread-2 (]: Began executing node model.procureiq.payment_anomaly_flags
+[0m13:11:07.578510 [debug] [Thread-1 (]: Began executing node model.procureiq.int_vendor_payment_stats
+[0m13:11:07.606355 [debug] [Thread-2 (]: Writing runtime sql for node "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.612876 [debug] [Thread-1 (]: Writing runtime sql for node "model.procureiq.int_vendor_payment_stats"
+[0m13:11:07.647101 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.int_vendor_payment_stats"
+[0m13:11:07.649807 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.653277 [debug] [Thread-1 (]: On model.procureiq.int_vendor_payment_stats: BEGIN
+[0m13:11:07.657984 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: BEGIN
+[0m13:11:07.662968 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:11:07.668333 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:11:07.683925 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:07.685844 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:07.688025 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.int_vendor_payment_stats"
+[0m13:11:07.690970 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.694863 [debug] [Thread-1 (]: On model.procureiq.int_vendor_payment_stats: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.int_vendor_payment_stats"} */
+
+  create view "procureiq"."warehouse"."int_vendor_payment_stats__dbt_tmp"
+    
+    
+  as (
+    -- Per-vendor aggregate features used by both ML models.
+-- This is what the RandomForest risk scorer and IsolationForest anomaly
+-- detector read as their feature matrix.
+WITH payment_stats AS (
+    SELECT
+        vendor_id,
+        COUNT(*)                                                        AS payment_count,
+        AVG(days_late)                                                  AS avg_days_late,
+        SUM(CASE WHEN is_disputed THEN 1 ELSE 0 END)::FLOAT
+            / NULLIF(COUNT(*), 0)                                       AS dispute_rate,
+        AVG(amount)                                                     AS avg_payment_amount,
+        STDDEV(amount)                                                  AS stddev_payment_amount,
+        MAX(payment_date)                                               AS last_payment_date,
+        DATE_PART('day', NOW() - MAX(payment_date)::TIMESTAMP)         AS days_since_last_payment
+    FROM "procureiq"."warehouse"."int_vendor_payment_joined"
+    GROUP BY vendor_id
+),
+
+po_stats AS (
+    SELECT
+        vendor_id,
+        COUNT(*) AS po_count
+    FROM "procureiq"."warehouse"."stg_purchase_orders"
+    GROUP BY vendor_id
+)
+
+SELECT
+    s.vendor_id,
+    s.payment_count,
+    COALESCE(s.avg_days_late, 0)::NUMERIC(8, 2)         AS avg_days_late,
+    COALESCE(s.dispute_rate, 0)::NUMERIC(6, 4)           AS dispute_rate,
+    COALESCE(s.avg_payment_amount, 0)                    AS avg_payment_amount,
+    COALESCE(s.stddev_payment_amount, 0)                 AS stddev_payment_amount,
+    s.last_payment_date,
+    COALESCE(s.days_since_last_payment, 999)::INTEGER    AS days_since_last_payment,
+    COALESCE(p.po_count, 0)                              AS po_count,
+    COALESCE(p.po_count::FLOAT / NULLIF(s.payment_count, 0), 0)  AS po_to_payment_ratio
+FROM payment_stats s
+LEFT JOIN po_stats p USING (vendor_id)
+  );
+[0m13:11:07.698311 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.payment_anomaly_flags"} */
+
+  
+    
+
+  create  table "procureiq"."warehouse"."payment_anomaly_flags__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Empty scaffold — dbt creates the table shape, ml/score.py INSERTs
+-- the flagged payment rows after running IsolationForest.
+-- WHERE FALSE produces zero rows but correct column types.
+SELECT
+    payment_id,
+    vendor_id,
+    payment_date,
+    amount,
+    NULL::NUMERIC(6, 4)     AS anomaly_score,
+    NULL::VARCHAR(100)      AS anomaly_type,
+    NOW()::TIMESTAMP        AS flagged_at
+FROM "procureiq"."warehouse"."int_vendor_payment_joined"
+WHERE FALSE
+  );
+  
+[0m13:11:07.714658 [debug] [Thread-2 (]: SQL status: SELECT 0 in 0.0 seconds
+[0m13:11:07.715355 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m13:11:07.721633 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.729388 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.int_vendor_payment_stats"
+[0m13:11:07.732723 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.payment_anomaly_flags"} */
+alter table "procureiq"."warehouse"."payment_anomaly_flags" rename to "payment_anomaly_flags__dbt_backup"
+[0m13:11:07.736148 [debug] [Thread-1 (]: On model.procureiq.int_vendor_payment_stats: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.int_vendor_payment_stats"} */
+alter table "procureiq"."warehouse"."int_vendor_payment_stats__dbt_tmp" rename to "int_vendor_payment_stats"
+[0m13:11:07.741926 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.744877 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.752546 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.758474 [debug] [Thread-1 (]: On model.procureiq.int_vendor_payment_stats: COMMIT
+[0m13:11:07.763016 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.payment_anomaly_flags"} */
+alter table "procureiq"."warehouse"."payment_anomaly_flags__dbt_tmp" rename to "payment_anomaly_flags"
+[0m13:11:07.767081 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.int_vendor_payment_stats"
+[0m13:11:07.772912 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:07.776218 [debug] [Thread-1 (]: On model.procureiq.int_vendor_payment_stats: COMMIT
+[0m13:11:07.800413 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: COMMIT
+[0m13:11:07.805698 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:07.808060 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.820785 [debug] [Thread-1 (]: Applying DROP to: "procureiq"."warehouse"."int_vendor_payment_stats__dbt_backup"
+[0m13:11:07.825002 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: COMMIT
+[0m13:11:07.831487 [debug] [Thread-1 (]: Using postgres connection "model.procureiq.int_vendor_payment_stats"
+[0m13:11:07.839965 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:07.841196 [debug] [Thread-1 (]: On model.procureiq.int_vendor_payment_stats: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.int_vendor_payment_stats"} */
+drop view if exists "procureiq"."warehouse"."int_vendor_payment_stats__dbt_backup" cascade
+[0m13:11:07.850556 [debug] [Thread-2 (]: Applying DROP to: "procureiq"."warehouse"."payment_anomaly_flags__dbt_backup"
+[0m13:11:07.854833 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m13:11:07.863800 [debug] [Thread-2 (]: Using postgres connection "model.procureiq.payment_anomaly_flags"
+[0m13:11:07.867917 [debug] [Thread-1 (]: Timing info for model.procureiq.int_vendor_payment_stats (execute): 13:11:07.606712 => 13:11:07.867674
+[0m13:11:07.871062 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.payment_anomaly_flags"} */
+drop table if exists "procureiq"."warehouse"."payment_anomaly_flags__dbt_backup" cascade
+[0m13:11:07.874006 [debug] [Thread-1 (]: On model.procureiq.int_vendor_payment_stats: Close
+[0m13:11:07.878354 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dcfd6010>]}
+[0m13:11:07.880658 [info ] [Thread-1 (]: 6 of 8 OK created sql view model warehouse.int_vendor_payment_stats ............ [[32mCREATE VIEW[0m in 0.37s]
+[0m13:11:07.882710 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m13:11:07.883983 [debug] [Thread-1 (]: Finished running node model.procureiq.int_vendor_payment_stats
+[0m13:11:07.891052 [debug] [Thread-2 (]: Timing info for model.procureiq.payment_anomaly_flags (execute): 13:11:07.582746 => 13:11:07.890564
+[0m13:11:07.895426 [debug] [Thread-4 (]: Began running node model.procureiq.vendor_risk_summary
+[0m13:11:07.897561 [debug] [Thread-2 (]: On model.procureiq.payment_anomaly_flags: Close
+[0m13:11:07.901848 [info ] [Thread-4 (]: 8 of 8 START sql table model warehouse.vendor_risk_summary ..................... [RUN]
+[0m13:11:07.907055 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dcfe3b90>]}
+[0m13:11:07.910374 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.procureiq.int_vendor_payment_joined, now model.procureiq.vendor_risk_summary)
+[0m13:11:07.913720 [info ] [Thread-2 (]: 7 of 8 OK created sql table model warehouse.payment_anomaly_flags .............. [[32mSELECT 0[0m in 0.39s]
+[0m13:11:07.917009 [debug] [Thread-4 (]: Began compiling node model.procureiq.vendor_risk_summary
+[0m13:11:07.919492 [debug] [Thread-2 (]: Finished running node model.procureiq.payment_anomaly_flags
+[0m13:11:07.926529 [debug] [Thread-4 (]: Writing injected SQL for node "model.procureiq.vendor_risk_summary"
+[0m13:11:07.951030 [debug] [Thread-4 (]: Timing info for model.procureiq.vendor_risk_summary (compile): 13:11:07.921971 => 13:11:07.950465
+[0m13:11:07.956086 [debug] [Thread-4 (]: Began executing node model.procureiq.vendor_risk_summary
+[0m13:11:07.963292 [debug] [Thread-4 (]: Writing runtime sql for node "model.procureiq.vendor_risk_summary"
+[0m13:11:07.987004 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.vendor_risk_summary"
+[0m13:11:07.989180 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: BEGIN
+[0m13:11:07.991782 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:11:08.003332 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:08.005960 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.vendor_risk_summary"
+[0m13:11:08.007963 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.vendor_risk_summary"} */
+
+  
+    
+
+  create  table "procureiq"."warehouse"."vendor_risk_summary__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- One row per vendor. dbt populates the business features; ml/score.py
+-- fills in risk_score, risk_label, anomaly_score, shap_values, scored_at
+-- via UPDATE after this table is created each DAG run.
+SELECT
+    v.vendor_id,
+    v.vendor_name,
+    v.category,
+    v.credit_tier,
+    COALESCE(s.avg_days_late, 0)::NUMERIC(8, 2)     AS avg_days_late,
+    COALESCE(s.payment_count, 0)                     AS payment_count,
+    COALESCE(s.dispute_rate, 0)::NUMERIC(6, 4)       AS dispute_rate,
+    COALESCE(s.days_since_last_payment, 999)         AS days_since_last_payment,
+    COALESCE(s.po_to_payment_ratio, 0)::NUMERIC(8, 4) AS po_to_payment_ratio,
+    -- ML columns — NULL until ml/score.py and ml/explain.py run
+    NULL::NUMERIC(6, 4)     AS risk_score,
+    NULL::VARCHAR(20)       AS risk_label,
+    NULL::NUMERIC(6, 4)     AS anomaly_score,
+    NULL::JSONB             AS shap_values,
+    NULL::TIMESTAMP         AS scored_at
+FROM "procureiq"."warehouse"."stg_vendors" v
+LEFT JOIN "procureiq"."warehouse"."int_vendor_payment_stats" s USING (vendor_id)
+  );
+  
+[0m13:11:08.043675 [debug] [Thread-4 (]: SQL status: SELECT 500 in 0.0 seconds
+[0m13:11:08.049307 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.vendor_risk_summary"
+[0m13:11:08.052501 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.vendor_risk_summary"} */
+alter table "procureiq"."warehouse"."vendor_risk_summary" rename to "vendor_risk_summary__dbt_backup"
+[0m13:11:08.055342 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:08.059396 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.vendor_risk_summary"
+[0m13:11:08.061865 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.vendor_risk_summary"} */
+alter table "procureiq"."warehouse"."vendor_risk_summary__dbt_tmp" rename to "vendor_risk_summary"
+[0m13:11:08.063951 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m13:11:08.067405 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: COMMIT
+[0m13:11:08.069737 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.vendor_risk_summary"
+[0m13:11:08.071477 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: COMMIT
+[0m13:11:08.074676 [debug] [Thread-4 (]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:08.080741 [debug] [Thread-4 (]: Applying DROP to: "procureiq"."warehouse"."vendor_risk_summary__dbt_backup"
+[0m13:11:08.084509 [debug] [Thread-4 (]: Using postgres connection "model.procureiq.vendor_risk_summary"
+[0m13:11:08.087537 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "model.procureiq.vendor_risk_summary"} */
+drop table if exists "procureiq"."warehouse"."vendor_risk_summary__dbt_backup" cascade
+[0m13:11:08.093061 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m13:11:08.096988 [debug] [Thread-4 (]: Timing info for model.procureiq.vendor_risk_summary (execute): 13:11:07.959259 => 13:11:08.096764
+[0m13:11:08.100395 [debug] [Thread-4 (]: On model.procureiq.vendor_risk_summary: Close
+[0m13:11:08.103829 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5fc241e7-76cd-4a8b-9ad3-202950638467', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263dd3ba6d0>]}
+[0m13:11:08.106837 [info ] [Thread-4 (]: 8 of 8 OK created sql table model warehouse.vendor_risk_summary ................ [[32mSELECT 500[0m in 0.19s]
+[0m13:11:08.110355 [debug] [Thread-4 (]: Finished running node model.procureiq.vendor_risk_summary
+[0m13:11:08.118049 [debug] [MainThread]: Using postgres connection "master"
+[0m13:11:08.120225 [debug] [MainThread]: On master: BEGIN
+[0m13:11:08.122162 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:11:08.130614 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m13:11:08.132878 [debug] [MainThread]: On master: COMMIT
+[0m13:11:08.135795 [debug] [MainThread]: Using postgres connection "master"
+[0m13:11:08.139138 [debug] [MainThread]: On master: COMMIT
+[0m13:11:08.141910 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m13:11:08.144344 [debug] [MainThread]: On master: Close
+[0m13:11:08.147349 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:11:08.149317 [debug] [MainThread]: Connection 'model.procureiq.int_vendor_payment_stats' was properly closed.
+[0m13:11:08.151133 [debug] [MainThread]: Connection 'model.procureiq.payment_anomaly_flags' was properly closed.
+[0m13:11:08.153077 [debug] [MainThread]: Connection 'model.procureiq.stg_purchase_orders' was properly closed.
+[0m13:11:08.155313 [debug] [MainThread]: Connection 'model.procureiq.vendor_risk_summary' was properly closed.
+[0m13:11:08.157210 [info ] [MainThread]: 
+[0m13:11:08.159625 [info ] [MainThread]: Finished running 6 view models, 2 table models in 0 hours 0 minutes and 1.72 seconds (1.72s).
+[0m13:11:08.164486 [debug] [MainThread]: Command end result
+[0m13:11:08.206653 [info ] [MainThread]: 
+[0m13:11:08.209290 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:11:08.213826 [info ] [MainThread]: 
+[0m13:11:08.217331 [info ] [MainThread]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 TOTAL=8
+[0m13:11:08.221915 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 4.1848116, "process_user_time": 4.442925, "process_kernel_time": 0.526296, "process_mem_max_rss": "143576", "process_in_blocks": "37840", "process_out_blocks": "4688"}
+[0m13:11:08.224103 [debug] [MainThread]: Command `dbt run` succeeded at 13:11:08.223903 after 4.19 seconds
+[0m13:11:08.226000 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df9048d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df29a110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7263df629890>]}
+[0m13:11:08.228311 [debug] [MainThread]: Flushing usage events
+[0m13:16:32.726103 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a3a13c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a3346b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a3345050>]}
+
+
+============================== 13:16:32.733391 | b182e8b1-e6ac-4544-b6bb-cb4ec4c9e5ff ==============================
+[0m13:16:32.733391 [info ] [MainThread]: Running with dbt=1.7.4
+[0m13:16:32.735977 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/opt/dbt', 'log_path': '/opt/dbt/logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt test --project-dir /opt/dbt --profiles-dir /opt/dbt', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m13:16:32.933882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b182e8b1-e6ac-4544-b6bb-cb4ec4c9e5ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a3346e10>]}
+[0m13:16:33.096998 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b182e8b1-e6ac-4544-b6bb-cb4ec4c9e5ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a3346e10>]}
+[0m13:16:33.101205 [info ] [MainThread]: Registered adapter: postgres=1.7.4
+[0m13:16:33.114279 [debug] [MainThread]: checksum: 248e8aba381ba2d577dce7ab50d2010c2aac45d2b27e6e6214cdd96d2d41fabc, vars: {}, profile: , target: , version: 1.7.4
+[0m13:16:33.725050 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:16:33.727761 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:16:33.738044 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b182e8b1-e6ac-4544-b6bb-cb4ec4c9e5ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a32e0710>]}
+[0m13:16:33.837593 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b182e8b1-e6ac-4544-b6bb-cb4ec4c9e5ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a1d1b410>]}
+[0m13:16:33.842426 [info ] [MainThread]: Found 8 models, 23 tests, 4 sources, 0 exposures, 0 metrics, 402 macros, 0 groups, 0 semantic models
+[0m13:16:33.851873 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b182e8b1-e6ac-4544-b6bb-cb4ec4c9e5ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a252de90>]}
+[0m13:16:33.867585 [info ] [MainThread]: 
+[0m13:16:33.872690 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m13:16:33.877495 [debug] [ThreadPool]: Acquiring new postgres connection 'list_procureiq_warehouse'
+[0m13:16:33.898886 [debug] [ThreadPool]: Using postgres connection "list_procureiq_warehouse"
+[0m13:16:33.904316 [debug] [ThreadPool]: On list_procureiq_warehouse: BEGIN
+[0m13:16:33.908126 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:16:33.924573 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:33.927573 [debug] [ThreadPool]: Using postgres connection "list_procureiq_warehouse"
+[0m13:16:33.929872 [debug] [ThreadPool]: On list_procureiq_warehouse: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "connection_name": "list_procureiq_warehouse"} */
+select
+      'procureiq' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'warehouse'
+    union all
+    select
+      'procureiq' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'warehouse'
+    union all
+    select
+      'procureiq' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'warehouse'
+  
+[0m13:16:33.937135 [debug] [ThreadPool]: SQL status: SELECT 9 in 0.0 seconds
+[0m13:16:33.940843 [debug] [ThreadPool]: On list_procureiq_warehouse: ROLLBACK
+[0m13:16:33.943724 [debug] [ThreadPool]: On list_procureiq_warehouse: Close
+[0m13:16:33.953325 [debug] [MainThread]: Using postgres connection "master"
+[0m13:16:33.956381 [debug] [MainThread]: On master: BEGIN
+[0m13:16:33.959030 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:16:33.970664 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:33.973687 [debug] [MainThread]: Using postgres connection "master"
+[0m13:16:33.977104 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m13:16:33.989386 [debug] [MainThread]: SQL status: SELECT 8 in 0.0 seconds
+[0m13:16:33.995649 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b182e8b1-e6ac-4544-b6bb-cb4ec4c9e5ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a31c7990>]}
+[0m13:16:33.999079 [debug] [MainThread]: On master: ROLLBACK
+[0m13:16:34.002763 [debug] [MainThread]: Using postgres connection "master"
+[0m13:16:34.006004 [debug] [MainThread]: On master: BEGIN
+[0m13:16:34.009843 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.012951 [debug] [MainThread]: On master: COMMIT
+[0m13:16:34.016155 [debug] [MainThread]: Using postgres connection "master"
+[0m13:16:34.019692 [debug] [MainThread]: On master: COMMIT
+[0m13:16:34.023481 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m13:16:34.026998 [debug] [MainThread]: On master: Close
+[0m13:16:34.031784 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:16:34.036059 [info ] [MainThread]: 
+[0m13:16:34.057053 [debug] [Thread-1 (]: Began running node test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba
+[0m13:16:34.058031 [debug] [Thread-2 (]: Began running node test.procureiq.assert_days_late_in_range
+[0m13:16:34.058931 [debug] [Thread-3 (]: Began running node test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639
+[0m13:16:34.059848 [debug] [Thread-4 (]: Began running node test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e
+[0m13:16:34.064004 [info ] [Thread-1 (]: 1 of 23 START test accepted_values_stg_vendors_credit_tier__A__B__C ............ [RUN]
+[0m13:16:34.070063 [info ] [Thread-2 (]: 2 of 23 START test assert_days_late_in_range ................................... [RUN]
+[0m13:16:34.074249 [info ] [Thread-3 (]: 3 of 23 START test not_null_int_vendor_payment_joined_payment_id ............... [RUN]
+[0m13:16:34.079047 [info ] [Thread-4 (]: 4 of 23 START test not_null_int_vendor_payment_stats_vendor_id ................. [RUN]
+[0m13:16:34.084679 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_procureiq_warehouse, now test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba)
+[0m13:16:34.089585 [debug] [Thread-2 (]: Acquiring new postgres connection 'test.procureiq.assert_days_late_in_range'
+[0m13:16:34.094798 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639'
+[0m13:16:34.100348 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e'
+[0m13:16:34.104634 [debug] [Thread-1 (]: Began compiling node test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba
+[0m13:16:34.108149 [debug] [Thread-2 (]: Began compiling node test.procureiq.assert_days_late_in_range
+[0m13:16:34.112355 [debug] [Thread-3 (]: Began compiling node test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639
+[0m13:16:34.115830 [debug] [Thread-4 (]: Began compiling node test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e
+[0m13:16:34.134510 [debug] [Thread-1 (]: Writing injected SQL for node "test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba"
+[0m13:16:34.138596 [debug] [Thread-2 (]: Writing injected SQL for node "test.procureiq.assert_days_late_in_range"
+[0m13:16:34.148173 [debug] [Thread-3 (]: Writing injected SQL for node "test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639"
+[0m13:16:34.154596 [debug] [Thread-4 (]: Writing injected SQL for node "test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e"
+[0m13:16:34.176913 [debug] [Thread-2 (]: Timing info for test.procureiq.assert_days_late_in_range (compile): 13:16:34.135714 => 13:16:34.176354
+[0m13:16:34.180105 [debug] [Thread-2 (]: Began executing node test.procureiq.assert_days_late_in_range
+[0m13:16:34.191977 [debug] [Thread-1 (]: Timing info for test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba (compile): 13:16:34.118724 => 13:16:34.191172
+[0m13:16:34.219603 [debug] [Thread-3 (]: Timing info for test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639 (compile): 13:16:34.141176 => 13:16:34.217838
+[0m13:16:34.226509 [debug] [Thread-2 (]: Writing runtime sql for node "test.procureiq.assert_days_late_in_range"
+[0m13:16:34.228021 [debug] [Thread-1 (]: Began executing node test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba
+[0m13:16:34.229813 [debug] [Thread-4 (]: Timing info for test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e (compile): 13:16:34.149756 => 13:16:34.228944
+[0m13:16:34.233640 [debug] [Thread-3 (]: Began executing node test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639
+[0m13:16:34.240961 [debug] [Thread-1 (]: Writing runtime sql for node "test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba"
+[0m13:16:34.243855 [debug] [Thread-4 (]: Began executing node test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e
+[0m13:16:34.249640 [debug] [Thread-3 (]: Writing runtime sql for node "test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639"
+[0m13:16:34.263069 [debug] [Thread-4 (]: Writing runtime sql for node "test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e"
+[0m13:16:34.278085 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.assert_days_late_in_range"
+[0m13:16:34.281586 [debug] [Thread-2 (]: On test.procureiq.assert_days_late_in_range: BEGIN
+[0m13:16:34.285539 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m13:16:34.289471 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e"
+[0m13:16:34.294638 [debug] [Thread-4 (]: On test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e: BEGIN
+[0m13:16:34.296327 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba"
+[0m13:16:34.300863 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m13:16:34.306810 [debug] [Thread-1 (]: On test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba: BEGIN
+[0m13:16:34.308597 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.310059 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639"
+[0m13:16:34.318707 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:16:34.324022 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.assert_days_late_in_range"
+[0m13:16:34.330188 [debug] [Thread-3 (]: On test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639: BEGIN
+[0m13:16:34.333612 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.342721 [debug] [Thread-2 (]: On test.procureiq.assert_days_late_in_range: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.assert_days_late_in_range"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      -- Singular test: fails if any non-null days_late is outside [-5, 365].
+-- Severity is warn (not error) because dormant-then-burst anomalies can
+-- legitimately produce days_late > 365 when bursting after a long gap.
+
+
+SELECT payment_id, days_late
+FROM "procureiq"."warehouse"."int_vendor_payment_joined"
+WHERE days_late IS NOT NULL
+  AND (days_late < -5 OR days_late > 365)
+      
+    ) dbt_internal_test
+[0m13:16:34.349916 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m13:16:34.350585 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.353035 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e"
+[0m13:16:34.364843 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba"
+[0m13:16:34.369007 [debug] [Thread-4 (]: On test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from "procureiq"."warehouse"."int_vendor_payment_stats"
+where vendor_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:34.373403 [debug] [Thread-1 (]: On test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        credit_tier as value_field,
+        count(*) as n_records
+
+    from "procureiq"."warehouse"."stg_vendors"
+    group by credit_tier
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'A','B','C'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:34.374651 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.380885 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.384223 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.384828 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.386860 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639"
+[0m13:16:34.390986 [debug] [Thread-2 (]: Timing info for test.procureiq.assert_days_late_in_range (execute): 13:16:34.182984 => 13:16:34.390671
+[0m13:16:34.394832 [debug] [Thread-4 (]: Timing info for test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e (execute): 13:16:34.256283 => 13:16:34.394560
+[0m13:16:34.398344 [debug] [Thread-1 (]: Timing info for test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba (execute): 13:16:34.238610 => 13:16:34.398094
+[0m13:16:34.401182 [debug] [Thread-3 (]: On test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select payment_id
+from "procureiq"."warehouse"."int_vendor_payment_joined"
+where payment_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:34.404021 [debug] [Thread-2 (]: On test.procureiq.assert_days_late_in_range: ROLLBACK
+[0m13:16:34.407941 [debug] [Thread-4 (]: On test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e: ROLLBACK
+[0m13:16:34.411369 [debug] [Thread-1 (]: On test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba: ROLLBACK
+[0m13:16:34.418665 [debug] [Thread-2 (]: On test.procureiq.assert_days_late_in_range: Close
+[0m13:16:34.420051 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.422667 [debug] [Thread-4 (]: On test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e: Close
+[0m13:16:34.427368 [debug] [Thread-1 (]: On test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba: Close
+[0m13:16:34.431180 [warn ] [Thread-2 (]: 2 of 23 WARN 175 assert_days_late_in_range ..................................... [[33mWARN 175[0m in 0.34s]
+[0m13:16:34.438540 [debug] [Thread-3 (]: Timing info for test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639 (execute): 13:16:34.246482 => 13:16:34.437751
+[0m13:16:34.444692 [info ] [Thread-4 (]: 4 of 23 PASS not_null_int_vendor_payment_stats_vendor_id ....................... [[32mPASS[0m in 0.34s]
+[0m13:16:34.450089 [info ] [Thread-1 (]: 1 of 23 PASS accepted_values_stg_vendors_credit_tier__A__B__C .................. [[32mPASS[0m in 0.37s]
+[0m13:16:34.457346 [debug] [Thread-2 (]: Finished running node test.procureiq.assert_days_late_in_range
+[0m13:16:34.462432 [debug] [Thread-3 (]: On test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639: ROLLBACK
+[0m13:16:34.466792 [debug] [Thread-4 (]: Finished running node test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e
+[0m13:16:34.473054 [debug] [Thread-1 (]: Finished running node test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba
+[0m13:16:34.477631 [debug] [Thread-2 (]: Began running node test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe
+[0m13:16:34.481694 [debug] [Thread-3 (]: On test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639: Close
+[0m13:16:34.484912 [debug] [Thread-4 (]: Began running node test.procureiq.not_null_stg_invoices_vendor_id.c573a57869
+[0m13:16:34.491556 [debug] [Thread-1 (]: Began running node test.procureiq.not_null_stg_payments_payment_id.c19cc50075
+[0m13:16:34.495412 [info ] [Thread-2 (]: 5 of 23 START test not_null_stg_invoices_invoice_id ............................ [RUN]
+[0m13:16:34.501979 [info ] [Thread-3 (]: 3 of 23 PASS not_null_int_vendor_payment_joined_payment_id ..................... [[32mPASS[0m in 0.41s]
+[0m13:16:34.508140 [info ] [Thread-4 (]: 6 of 23 START test not_null_stg_invoices_vendor_id ............................. [RUN]
+[0m13:16:34.515518 [info ] [Thread-1 (]: 7 of 23 START test not_null_stg_payments_payment_id ............................ [RUN]
+[0m13:16:34.524199 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.procureiq.assert_days_late_in_range, now test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe)
+[0m13:16:34.528907 [debug] [Thread-3 (]: Finished running node test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639
+[0m13:16:34.532238 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_int_vendor_payment_stats_vendor_id.492b97762e, now test.procureiq.not_null_stg_invoices_vendor_id.c573a57869)
+[0m13:16:34.536006 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.procureiq.accepted_values_stg_vendors_credit_tier__A__B__C.2cc5c658ba, now test.procureiq.not_null_stg_payments_payment_id.c19cc50075)
+[0m13:16:34.540727 [debug] [Thread-2 (]: Began compiling node test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe
+[0m13:16:34.544992 [debug] [Thread-3 (]: Began running node test.procureiq.not_null_stg_payments_vendor_id.c635042d02
+[0m13:16:34.548867 [debug] [Thread-4 (]: Began compiling node test.procureiq.not_null_stg_invoices_vendor_id.c573a57869
+[0m13:16:34.555222 [debug] [Thread-1 (]: Began compiling node test.procureiq.not_null_stg_payments_payment_id.c19cc50075
+[0m13:16:34.572792 [debug] [Thread-2 (]: Writing injected SQL for node "test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe"
+[0m13:16:34.575769 [info ] [Thread-3 (]: 8 of 23 START test not_null_stg_payments_vendor_id ............................. [RUN]
+[0m13:16:34.587814 [debug] [Thread-4 (]: Writing injected SQL for node "test.procureiq.not_null_stg_invoices_vendor_id.c573a57869"
+[0m13:16:34.594446 [debug] [Thread-1 (]: Writing injected SQL for node "test.procureiq.not_null_stg_payments_payment_id.c19cc50075"
+[0m13:16:34.601238 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_int_vendor_payment_joined_payment_id.19bbccc639, now test.procureiq.not_null_stg_payments_vendor_id.c635042d02)
+[0m13:16:34.611627 [debug] [Thread-3 (]: Began compiling node test.procureiq.not_null_stg_payments_vendor_id.c635042d02
+[0m13:16:34.625122 [debug] [Thread-2 (]: Timing info for test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe (compile): 13:16:34.559943 => 13:16:34.624560
+[0m13:16:34.625870 [debug] [Thread-3 (]: Writing injected SQL for node "test.procureiq.not_null_stg_payments_vendor_id.c635042d02"
+[0m13:16:34.629594 [debug] [Thread-2 (]: Began executing node test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe
+[0m13:16:34.630458 [debug] [Thread-4 (]: Timing info for test.procureiq.not_null_stg_invoices_vendor_id.c573a57869 (compile): 13:16:34.580708 => 13:16:34.630145
+[0m13:16:34.634816 [debug] [Thread-1 (]: Timing info for test.procureiq.not_null_stg_payments_payment_id.c19cc50075 (compile): 13:16:34.590125 => 13:16:34.633904
+[0m13:16:34.643507 [debug] [Thread-2 (]: Writing runtime sql for node "test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe"
+[0m13:16:34.648686 [debug] [Thread-4 (]: Began executing node test.procureiq.not_null_stg_invoices_vendor_id.c573a57869
+[0m13:16:34.653908 [debug] [Thread-1 (]: Began executing node test.procureiq.not_null_stg_payments_payment_id.c19cc50075
+[0m13:16:34.664466 [debug] [Thread-4 (]: Writing runtime sql for node "test.procureiq.not_null_stg_invoices_vendor_id.c573a57869"
+[0m13:16:34.668982 [debug] [Thread-1 (]: Writing runtime sql for node "test.procureiq.not_null_stg_payments_payment_id.c19cc50075"
+[0m13:16:34.670046 [debug] [Thread-3 (]: Timing info for test.procureiq.not_null_stg_payments_vendor_id.c635042d02 (compile): 13:16:34.616384 => 13:16:34.669559
+[0m13:16:34.675612 [debug] [Thread-3 (]: Began executing node test.procureiq.not_null_stg_payments_vendor_id.c635042d02
+[0m13:16:34.680745 [debug] [Thread-3 (]: Writing runtime sql for node "test.procureiq.not_null_stg_payments_vendor_id.c635042d02"
+[0m13:16:34.684045 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe"
+[0m13:16:34.687008 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe: BEGIN
+[0m13:16:34.688158 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.not_null_stg_invoices_vendor_id.c573a57869"
+[0m13:16:34.691278 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:16:34.693697 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.not_null_stg_payments_payment_id.c19cc50075"
+[0m13:16:34.694827 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_invoices_vendor_id.c573a57869: BEGIN
+[0m13:16:34.698261 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.not_null_stg_payments_vendor_id.c635042d02"
+[0m13:16:34.700744 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_payments_payment_id.c19cc50075: BEGIN
+[0m13:16:34.702975 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:16:34.706100 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_payments_vendor_id.c635042d02: BEGIN
+[0m13:16:34.706723 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.708912 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:16:34.714018 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:16:34.716580 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe"
+[0m13:16:34.721454 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.726188 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select invoice_id
+from "procureiq"."warehouse"."stg_invoices"
+where invoice_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:34.728930 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.not_null_stg_invoices_vendor_id.c573a57869"
+[0m13:16:34.730168 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.731595 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:34.733500 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.734535 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_invoices_vendor_id.c573a57869: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_invoices_vendor_id.c573a57869"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from "procureiq"."warehouse"."stg_invoices"
+where vendor_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:34.737524 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.not_null_stg_payments_payment_id.c19cc50075"
+[0m13:16:34.740168 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.not_null_stg_payments_vendor_id.c635042d02"
+[0m13:16:34.744630 [debug] [Thread-2 (]: Timing info for test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe (execute): 13:16:34.637624 => 13:16:34.744076
+[0m13:16:34.749685 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_payments_payment_id.c19cc50075: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_payments_payment_id.c19cc50075"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select payment_id
+from "procureiq"."warehouse"."stg_payments"
+where payment_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:34.751250 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.753273 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_payments_vendor_id.c635042d02: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_payments_vendor_id.c635042d02"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from "procureiq"."warehouse"."stg_payments"
+where vendor_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:34.756518 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe: ROLLBACK
+[0m13:16:34.761810 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.764551 [debug] [Thread-4 (]: Timing info for test.procureiq.not_null_stg_invoices_vendor_id.c573a57869 (execute): 13:16:34.661532 => 13:16:34.764029
+[0m13:16:34.771277 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe: Close
+[0m13:16:34.772151 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:34.776045 [debug] [Thread-1 (]: Timing info for test.procureiq.not_null_stg_payments_payment_id.c19cc50075 (execute): 13:16:34.666840 => 13:16:34.775537
+[0m13:16:34.779573 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_invoices_vendor_id.c573a57869: ROLLBACK
+[0m13:16:34.783726 [info ] [Thread-2 (]: 5 of 23 PASS not_null_stg_invoices_invoice_id .................................. [[32mPASS[0m in 0.26s]
+[0m13:16:34.788073 [debug] [Thread-3 (]: Timing info for test.procureiq.not_null_stg_payments_vendor_id.c635042d02 (execute): 13:16:34.678041 => 13:16:34.787559
+[0m13:16:34.791660 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_payments_payment_id.c19cc50075: ROLLBACK
+[0m13:16:34.795911 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_invoices_vendor_id.c573a57869: Close
+[0m13:16:34.799806 [debug] [Thread-2 (]: Finished running node test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe
+[0m13:16:34.805911 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_payments_vendor_id.c635042d02: ROLLBACK
+[0m13:16:34.812742 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_payments_payment_id.c19cc50075: Close
+[0m13:16:34.816327 [info ] [Thread-4 (]: 6 of 23 PASS not_null_stg_invoices_vendor_id ................................... [[32mPASS[0m in 0.28s]
+[0m13:16:34.821472 [debug] [Thread-2 (]: Began running node test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9
+[0m13:16:34.825348 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_payments_vendor_id.c635042d02: Close
+[0m13:16:34.829010 [info ] [Thread-1 (]: 7 of 23 PASS not_null_stg_payments_payment_id .................................. [[32mPASS[0m in 0.29s]
+[0m13:16:34.831820 [debug] [Thread-4 (]: Finished running node test.procureiq.not_null_stg_invoices_vendor_id.c573a57869
+[0m13:16:34.835480 [info ] [Thread-2 (]: 9 of 23 START test not_null_stg_purchase_orders_po_id .......................... [RUN]
+[0m13:16:34.841306 [info ] [Thread-3 (]: 8 of 23 PASS not_null_stg_payments_vendor_id ................................... [[32mPASS[0m in 0.24s]
+[0m13:16:34.845412 [debug] [Thread-1 (]: Finished running node test.procureiq.not_null_stg_payments_payment_id.c19cc50075
+[0m13:16:34.849234 [debug] [Thread-4 (]: Began running node test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8
+[0m13:16:34.853575 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_invoices_invoice_id.1cc96ab5fe, now test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9)
+[0m13:16:34.856444 [debug] [Thread-3 (]: Finished running node test.procureiq.not_null_stg_payments_vendor_id.c635042d02
+[0m13:16:34.858920 [debug] [Thread-1 (]: Began running node test.procureiq.not_null_stg_vendors_category.a0628dfc5b
+[0m13:16:34.862022 [info ] [Thread-4 (]: 10 of 23 START test not_null_stg_purchase_orders_vendor_id ..................... [RUN]
+[0m13:16:34.864650 [debug] [Thread-2 (]: Began compiling node test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9
+[0m13:16:34.867205 [debug] [Thread-3 (]: Began running node test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b
+[0m13:16:34.870729 [info ] [Thread-1 (]: 11 of 23 START test not_null_stg_vendors_category .............................. [RUN]
+[0m13:16:34.874697 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_invoices_vendor_id.c573a57869, now test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8)
+[0m13:16:34.888211 [debug] [Thread-2 (]: Writing injected SQL for node "test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9"
+[0m13:16:34.893039 [info ] [Thread-3 (]: 12 of 23 START test not_null_stg_vendors_vendor_id ............................. [RUN]
+[0m13:16:34.899544 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_payments_payment_id.c19cc50075, now test.procureiq.not_null_stg_vendors_category.a0628dfc5b)
+[0m13:16:34.908073 [debug] [Thread-4 (]: Began compiling node test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8
+[0m13:16:34.917680 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_payments_vendor_id.c635042d02, now test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b)
+[0m13:16:34.922313 [debug] [Thread-1 (]: Began compiling node test.procureiq.not_null_stg_vendors_category.a0628dfc5b
+[0m13:16:34.929270 [debug] [Thread-4 (]: Writing injected SQL for node "test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8"
+[0m13:16:34.932739 [debug] [Thread-3 (]: Began compiling node test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b
+[0m13:16:34.940864 [debug] [Thread-1 (]: Writing injected SQL for node "test.procureiq.not_null_stg_vendors_category.a0628dfc5b"
+[0m13:16:34.944589 [debug] [Thread-2 (]: Timing info for test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9 (compile): 13:16:34.878876 => 13:16:34.943886
+[0m13:16:34.955302 [debug] [Thread-3 (]: Writing injected SQL for node "test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b"
+[0m13:16:34.960730 [debug] [Thread-2 (]: Began executing node test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9
+[0m13:16:34.964816 [debug] [Thread-4 (]: Timing info for test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8 (compile): 13:16:34.925009 => 13:16:34.963906
+[0m13:16:34.971999 [debug] [Thread-1 (]: Timing info for test.procureiq.not_null_stg_vendors_category.a0628dfc5b (compile): 13:16:34.936054 => 13:16:34.970558
+[0m13:16:34.978007 [debug] [Thread-2 (]: Writing runtime sql for node "test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9"
+[0m13:16:34.981005 [debug] [Thread-4 (]: Began executing node test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8
+[0m13:16:34.985122 [debug] [Thread-3 (]: Timing info for test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b (compile): 13:16:34.946884 => 13:16:34.984366
+[0m13:16:34.987422 [debug] [Thread-1 (]: Began executing node test.procureiq.not_null_stg_vendors_category.a0628dfc5b
+[0m13:16:35.000296 [debug] [Thread-4 (]: Writing runtime sql for node "test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8"
+[0m13:16:35.002927 [debug] [Thread-3 (]: Began executing node test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b
+[0m13:16:35.009993 [debug] [Thread-1 (]: Writing runtime sql for node "test.procureiq.not_null_stg_vendors_category.a0628dfc5b"
+[0m13:16:35.021260 [debug] [Thread-3 (]: Writing runtime sql for node "test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b"
+[0m13:16:35.024635 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9"
+[0m13:16:35.026342 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8"
+[0m13:16:35.031456 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9: BEGIN
+[0m13:16:35.034733 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8: BEGIN
+[0m13:16:35.038745 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:16:35.042124 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.not_null_stg_vendors_category.a0628dfc5b"
+[0m13:16:35.044014 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:16:35.055994 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b"
+[0m13:16:35.057602 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_vendors_category.a0628dfc5b: BEGIN
+[0m13:16:35.064059 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.068390 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b: BEGIN
+[0m13:16:35.073983 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:16:35.074778 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.078547 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9"
+[0m13:16:35.084616 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:16:35.091597 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8"
+[0m13:16:35.095086 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select po_id
+from "procureiq"."warehouse"."stg_purchase_orders"
+where po_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.096316 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.100601 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from "procureiq"."warehouse"."stg_purchase_orders"
+where vendor_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.105928 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.not_null_stg_vendors_category.a0628dfc5b"
+[0m13:16:35.106700 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.107436 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.113510 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.114323 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_vendors_category.a0628dfc5b: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_vendors_category.a0628dfc5b"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select category
+from "procureiq"."warehouse"."stg_vendors"
+where category is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.116840 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b"
+[0m13:16:35.120576 [debug] [Thread-2 (]: Timing info for test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9 (execute): 13:16:34.973133 => 13:16:35.120203
+[0m13:16:35.124548 [debug] [Thread-4 (]: Timing info for test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8 (execute): 13:16:34.995308 => 13:16:35.124118
+[0m13:16:35.129125 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.130190 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from "procureiq"."warehouse"."stg_vendors"
+where vendor_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.132897 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9: ROLLBACK
+[0m13:16:35.135932 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8: ROLLBACK
+[0m13:16:35.140664 [debug] [Thread-1 (]: Timing info for test.procureiq.not_null_stg_vendors_category.a0628dfc5b (execute): 13:16:35.006111 => 13:16:35.140113
+[0m13:16:35.149125 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.150855 [debug] [Thread-2 (]: On test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9: Close
+[0m13:16:35.156017 [debug] [Thread-4 (]: On test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8: Close
+[0m13:16:35.159792 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_vendors_category.a0628dfc5b: ROLLBACK
+[0m13:16:35.168318 [debug] [Thread-3 (]: Timing info for test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b (execute): 13:16:35.016534 => 13:16:35.167564
+[0m13:16:35.175164 [info ] [Thread-2 (]: 9 of 23 PASS not_null_stg_purchase_orders_po_id ................................ [[32mPASS[0m in 0.32s]
+[0m13:16:35.180313 [info ] [Thread-4 (]: 10 of 23 PASS not_null_stg_purchase_orders_vendor_id ........................... [[32mPASS[0m in 0.31s]
+[0m13:16:35.184695 [debug] [Thread-1 (]: On test.procureiq.not_null_stg_vendors_category.a0628dfc5b: Close
+[0m13:16:35.187167 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b: ROLLBACK
+[0m13:16:35.191455 [debug] [Thread-2 (]: Finished running node test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9
+[0m13:16:35.194461 [debug] [Thread-4 (]: Finished running node test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8
+[0m13:16:35.197563 [info ] [Thread-1 (]: 11 of 23 PASS not_null_stg_vendors_category .................................... [[32mPASS[0m in 0.30s]
+[0m13:16:35.200378 [debug] [Thread-3 (]: On test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b: Close
+[0m13:16:35.202513 [debug] [Thread-2 (]: Began running node test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93
+[0m13:16:35.205627 [debug] [Thread-4 (]: Began running node test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805
+[0m13:16:35.208112 [debug] [Thread-1 (]: Finished running node test.procureiq.not_null_stg_vendors_category.a0628dfc5b
+[0m13:16:35.212481 [info ] [Thread-3 (]: 12 of 23 PASS not_null_stg_vendors_vendor_id ................................... [[32mPASS[0m in 0.30s]
+[0m13:16:35.214602 [info ] [Thread-2 (]: 13 of 23 START test not_null_vendor_risk_summary_vendor_id ..................... [RUN]
+[0m13:16:35.217636 [info ] [Thread-4 (]: 14 of 23 START test relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_  [RUN]
+[0m13:16:35.220957 [debug] [Thread-1 (]: Began running node test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f
+[0m13:16:35.224553 [debug] [Thread-3 (]: Finished running node test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b
+[0m13:16:35.228345 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_purchase_orders_po_id.89b72e8cf9, now test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93)
+[0m13:16:35.232950 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_purchase_orders_vendor_id.2111dc6bf8, now test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805)
+[0m13:16:35.236935 [info ] [Thread-1 (]: 15 of 23 START test relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_  [RUN]
+[0m13:16:35.240654 [debug] [Thread-3 (]: Began running node test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12
+[0m13:16:35.244287 [debug] [Thread-2 (]: Began compiling node test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93
+[0m13:16:35.247460 [debug] [Thread-4 (]: Began compiling node test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805
+[0m13:16:35.250564 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_vendors_category.a0628dfc5b, now test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f)
+[0m13:16:35.253833 [info ] [Thread-3 (]: 16 of 23 START test relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_  [RUN]
+[0m13:16:35.260675 [debug] [Thread-2 (]: Writing injected SQL for node "test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93"
+[0m13:16:35.273319 [debug] [Thread-4 (]: Writing injected SQL for node "test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805"
+[0m13:16:35.275315 [debug] [Thread-1 (]: Began compiling node test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f
+[0m13:16:35.279134 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_stg_vendors_vendor_id.2ca8993c0b, now test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12)
+[0m13:16:35.294632 [debug] [Thread-1 (]: Writing injected SQL for node "test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f"
+[0m13:16:35.296586 [debug] [Thread-3 (]: Began compiling node test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12
+[0m13:16:35.311265 [debug] [Thread-3 (]: Writing injected SQL for node "test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12"
+[0m13:16:35.314925 [debug] [Thread-4 (]: Timing info for test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805 (compile): 13:16:35.263769 => 13:16:35.314167
+[0m13:16:35.315905 [debug] [Thread-2 (]: Timing info for test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93 (compile): 13:16:35.256903 => 13:16:35.315527
+[0m13:16:35.321443 [debug] [Thread-4 (]: Began executing node test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805
+[0m13:16:35.323541 [debug] [Thread-1 (]: Timing info for test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f (compile): 13:16:35.287217 => 13:16:35.322351
+[0m13:16:35.327271 [debug] [Thread-2 (]: Began executing node test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93
+[0m13:16:35.338028 [debug] [Thread-3 (]: Timing info for test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12 (compile): 13:16:35.301564 => 13:16:35.337221
+[0m13:16:35.339824 [debug] [Thread-4 (]: Writing runtime sql for node "test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805"
+[0m13:16:35.343228 [debug] [Thread-1 (]: Began executing node test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f
+[0m13:16:35.352183 [debug] [Thread-2 (]: Writing runtime sql for node "test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93"
+[0m13:16:35.356723 [debug] [Thread-3 (]: Began executing node test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12
+[0m13:16:35.365842 [debug] [Thread-1 (]: Writing runtime sql for node "test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f"
+[0m13:16:35.374635 [debug] [Thread-3 (]: Writing runtime sql for node "test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12"
+[0m13:16:35.381032 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805"
+[0m13:16:35.385384 [debug] [Thread-4 (]: On test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805: BEGIN
+[0m13:16:35.388385 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93"
+[0m13:16:35.390690 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:16:35.393938 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f"
+[0m13:16:35.395882 [debug] [Thread-2 (]: On test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93: BEGIN
+[0m13:16:35.403660 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12"
+[0m13:16:35.407868 [debug] [Thread-1 (]: On test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f: BEGIN
+[0m13:16:35.411922 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:16:35.412889 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.414873 [debug] [Thread-3 (]: On test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12: BEGIN
+[0m13:16:35.417557 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:16:35.425013 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805"
+[0m13:16:35.427597 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:16:35.429398 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.432941 [debug] [Thread-4 (]: On test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select vendor_id as from_field
+    from "procureiq"."warehouse"."stg_invoices"
+    where vendor_id is not null
+),
+
+parent as (
+    select vendor_id as to_field
+    from "procureiq"."warehouse"."stg_vendors"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.436799 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.440244 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93"
+[0m13:16:35.443911 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.445550 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f"
+[0m13:16:35.446925 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.448005 [debug] [Thread-2 (]: On test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from "procureiq"."warehouse"."vendor_risk_summary"
+where vendor_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.450229 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12"
+[0m13:16:35.452842 [debug] [Thread-1 (]: On test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select vendor_id as from_field
+    from "procureiq"."warehouse"."stg_payments"
+    where vendor_id is not null
+),
+
+parent as (
+    select vendor_id as to_field
+    from "procureiq"."warehouse"."stg_vendors"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.456842 [debug] [Thread-4 (]: Timing info for test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805 (execute): 13:16:35.331739 => 13:16:35.456607
+[0m13:16:35.460228 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.461189 [debug] [Thread-3 (]: On test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select vendor_id as from_field
+    from "procureiq"."warehouse"."stg_purchase_orders"
+    where vendor_id is not null
+),
+
+parent as (
+    select vendor_id as to_field
+    from "procureiq"."warehouse"."stg_vendors"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.467985 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.469923 [debug] [Thread-4 (]: On test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805: ROLLBACK
+[0m13:16:35.473977 [debug] [Thread-2 (]: Timing info for test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93 (execute): 13:16:35.347395 => 13:16:35.473654
+[0m13:16:35.480710 [debug] [Thread-1 (]: Timing info for test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f (execute): 13:16:35.362423 => 13:16:35.480138
+[0m13:16:35.482959 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.484884 [debug] [Thread-4 (]: On test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805: Close
+[0m13:16:35.487035 [debug] [Thread-2 (]: On test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93: ROLLBACK
+[0m13:16:35.489793 [debug] [Thread-1 (]: On test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f: ROLLBACK
+[0m13:16:35.494997 [debug] [Thread-3 (]: Timing info for test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12 (execute): 13:16:35.370874 => 13:16:35.494494
+[0m13:16:35.498806 [info ] [Thread-4 (]: 14 of 23 PASS relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_  [[32mPASS[0m in 0.27s]
+[0m13:16:35.501836 [debug] [Thread-2 (]: On test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93: Close
+[0m13:16:35.504699 [debug] [Thread-1 (]: On test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f: Close
+[0m13:16:35.506764 [debug] [Thread-3 (]: On test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12: ROLLBACK
+[0m13:16:35.510282 [debug] [Thread-4 (]: Finished running node test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805
+[0m13:16:35.514642 [info ] [Thread-2 (]: 13 of 23 PASS not_null_vendor_risk_summary_vendor_id ........................... [[32mPASS[0m in 0.29s]
+[0m13:16:35.518109 [info ] [Thread-1 (]: 15 of 23 PASS relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_  [[32mPASS[0m in 0.27s]
+[0m13:16:35.523021 [debug] [Thread-3 (]: On test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12: Close
+[0m13:16:35.525902 [debug] [Thread-4 (]: Began running node test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2
+[0m13:16:35.529627 [debug] [Thread-2 (]: Finished running node test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93
+[0m13:16:35.533136 [debug] [Thread-1 (]: Finished running node test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f
+[0m13:16:35.537424 [info ] [Thread-3 (]: 16 of 23 PASS relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_  [[32mPASS[0m in 0.26s]
+[0m13:16:35.540667 [info ] [Thread-4 (]: 17 of 23 START test unique_int_vendor_payment_joined_payment_id ................ [RUN]
+[0m13:16:35.545376 [debug] [Thread-2 (]: Began running node test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24
+[0m13:16:35.548749 [debug] [Thread-1 (]: Began running node test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5
+[0m13:16:35.551902 [debug] [Thread-3 (]: Finished running node test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12
+[0m13:16:35.554865 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.procureiq.relationships_stg_invoices_vendor_id__vendor_id__ref_stg_vendors_.45c3e50805, now test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2)
+[0m13:16:35.558056 [info ] [Thread-2 (]: 18 of 23 START test unique_int_vendor_payment_stats_vendor_id .................. [RUN]
+[0m13:16:35.561752 [info ] [Thread-1 (]: 19 of 23 START test unique_stg_invoices_invoice_id ............................. [RUN]
+[0m13:16:35.565487 [debug] [Thread-3 (]: Began running node test.procureiq.unique_stg_payments_payment_id.3744510712
+[0m13:16:35.569845 [debug] [Thread-4 (]: Began compiling node test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2
+[0m13:16:35.575009 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.procureiq.not_null_vendor_risk_summary_vendor_id.11ff319f93, now test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24)
+[0m13:16:35.578597 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.procureiq.relationships_stg_payments_vendor_id__vendor_id__ref_stg_vendors_.20c81fd18f, now test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5)
+[0m13:16:35.584222 [info ] [Thread-3 (]: 20 of 23 START test unique_stg_payments_payment_id ............................. [RUN]
+[0m13:16:35.598974 [debug] [Thread-4 (]: Writing injected SQL for node "test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2"
+[0m13:16:35.601119 [debug] [Thread-2 (]: Began compiling node test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24
+[0m13:16:35.603754 [debug] [Thread-1 (]: Began compiling node test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5
+[0m13:16:35.606559 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.procureiq.relationships_stg_purchase_orders_vendor_id__vendor_id__ref_stg_vendors_.f5c680eb12, now test.procureiq.unique_stg_payments_payment_id.3744510712)
+[0m13:16:35.615318 [debug] [Thread-2 (]: Writing injected SQL for node "test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24"
+[0m13:16:35.623168 [debug] [Thread-1 (]: Writing injected SQL for node "test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5"
+[0m13:16:35.625310 [debug] [Thread-3 (]: Began compiling node test.procureiq.unique_stg_payments_payment_id.3744510712
+[0m13:16:35.630459 [debug] [Thread-4 (]: Timing info for test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2 (compile): 13:16:35.588815 => 13:16:35.629991
+[0m13:16:35.642168 [debug] [Thread-3 (]: Writing injected SQL for node "test.procureiq.unique_stg_payments_payment_id.3744510712"
+[0m13:16:35.646341 [debug] [Thread-2 (]: Timing info for test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24 (compile): 13:16:35.611404 => 13:16:35.645586
+[0m13:16:35.648597 [debug] [Thread-4 (]: Began executing node test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2
+[0m13:16:35.653784 [debug] [Thread-1 (]: Timing info for test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5 (compile): 13:16:35.617820 => 13:16:35.652901
+[0m13:16:35.660356 [debug] [Thread-2 (]: Began executing node test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24
+[0m13:16:35.674788 [debug] [Thread-4 (]: Writing runtime sql for node "test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2"
+[0m13:16:35.680103 [debug] [Thread-1 (]: Began executing node test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5
+[0m13:16:35.689770 [debug] [Thread-2 (]: Writing runtime sql for node "test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24"
+[0m13:16:35.701095 [debug] [Thread-1 (]: Writing runtime sql for node "test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5"
+[0m13:16:35.706996 [debug] [Thread-3 (]: Timing info for test.procureiq.unique_stg_payments_payment_id.3744510712 (compile): 13:16:35.633912 => 13:16:35.706166
+[0m13:16:35.712574 [debug] [Thread-3 (]: Began executing node test.procureiq.unique_stg_payments_payment_id.3744510712
+[0m13:16:35.719802 [debug] [Thread-3 (]: Writing runtime sql for node "test.procureiq.unique_stg_payments_payment_id.3744510712"
+[0m13:16:35.722996 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2"
+[0m13:16:35.725176 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5"
+[0m13:16:35.730830 [debug] [Thread-4 (]: On test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2: BEGIN
+[0m13:16:35.732909 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24"
+[0m13:16:35.735843 [debug] [Thread-1 (]: On test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5: BEGIN
+[0m13:16:35.738517 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:16:35.739189 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.unique_stg_payments_payment_id.3744510712"
+[0m13:16:35.742890 [debug] [Thread-2 (]: On test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24: BEGIN
+[0m13:16:35.746801 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:16:35.754907 [debug] [Thread-3 (]: On test.procureiq.unique_stg_payments_payment_id.3744510712: BEGIN
+[0m13:16:35.758259 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:16:35.761033 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.763830 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:16:35.769162 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2"
+[0m13:16:35.770173 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.774023 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.774705 [debug] [Thread-4 (]: On test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    payment_id as unique_field,
+    count(*) as n_records
+
+from "procureiq"."warehouse"."int_vendor_payment_joined"
+where payment_id is not null
+group by payment_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.776523 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:35.777451 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5"
+[0m13:16:35.779728 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24"
+[0m13:16:35.784526 [debug] [Thread-3 (]: Using postgres connection "test.procureiq.unique_stg_payments_payment_id.3744510712"
+[0m13:16:35.787059 [debug] [Thread-1 (]: On test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    invoice_id as unique_field,
+    count(*) as n_records
+
+from "procureiq"."warehouse"."stg_invoices"
+where invoice_id is not null
+group by invoice_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.788996 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.790860 [debug] [Thread-2 (]: On test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    vendor_id as unique_field,
+    count(*) as n_records
+
+from "procureiq"."warehouse"."int_vendor_payment_stats"
+where vendor_id is not null
+group by vendor_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.793422 [debug] [Thread-3 (]: On test.procureiq.unique_stg_payments_payment_id.3744510712: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.unique_stg_payments_payment_id.3744510712"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    payment_id as unique_field,
+    count(*) as n_records
+
+from "procureiq"."warehouse"."stg_payments"
+where payment_id is not null
+group by payment_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:35.799163 [debug] [Thread-4 (]: Timing info for test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2 (execute): 13:16:35.669434 => 13:16:35.798792
+[0m13:16:35.805010 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.808235 [debug] [Thread-4 (]: On test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2: ROLLBACK
+[0m13:16:35.809586 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.812097 [debug] [Thread-1 (]: Timing info for test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5 (execute): 13:16:35.696655 => 13:16:35.811849
+[0m13:16:35.812602 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:35.815079 [debug] [Thread-4 (]: On test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2: Close
+[0m13:16:35.818435 [debug] [Thread-2 (]: Timing info for test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24 (execute): 13:16:35.684950 => 13:16:35.818128
+[0m13:16:35.821057 [debug] [Thread-1 (]: On test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5: ROLLBACK
+[0m13:16:35.825119 [debug] [Thread-3 (]: Timing info for test.procureiq.unique_stg_payments_payment_id.3744510712 (execute): 13:16:35.716948 => 13:16:35.824745
+[0m13:16:35.829479 [info ] [Thread-4 (]: 17 of 23 PASS unique_int_vendor_payment_joined_payment_id ...................... [[32mPASS[0m in 0.27s]
+[0m13:16:35.832245 [debug] [Thread-2 (]: On test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24: ROLLBACK
+[0m13:16:35.837434 [debug] [Thread-1 (]: On test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5: Close
+[0m13:16:35.840015 [debug] [Thread-3 (]: On test.procureiq.unique_stg_payments_payment_id.3744510712: ROLLBACK
+[0m13:16:35.844773 [debug] [Thread-4 (]: Finished running node test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2
+[0m13:16:35.849255 [debug] [Thread-2 (]: On test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24: Close
+[0m13:16:35.854231 [info ] [Thread-1 (]: 19 of 23 PASS unique_stg_invoices_invoice_id ................................... [[32mPASS[0m in 0.28s]
+[0m13:16:35.858360 [debug] [Thread-3 (]: On test.procureiq.unique_stg_payments_payment_id.3744510712: Close
+[0m13:16:35.861477 [debug] [Thread-4 (]: Began running node test.procureiq.unique_stg_purchase_orders_po_id.b10783048e
+[0m13:16:35.868692 [info ] [Thread-2 (]: 18 of 23 PASS unique_int_vendor_payment_stats_vendor_id ........................ [[32mPASS[0m in 0.29s]
+[0m13:16:35.873219 [debug] [Thread-1 (]: Finished running node test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5
+[0m13:16:35.878236 [info ] [Thread-3 (]: 20 of 23 PASS unique_stg_payments_payment_id ................................... [[32mPASS[0m in 0.27s]
+[0m13:16:35.880929 [info ] [Thread-4 (]: 21 of 23 START test unique_stg_purchase_orders_po_id ........................... [RUN]
+[0m13:16:35.887295 [debug] [Thread-2 (]: Finished running node test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24
+[0m13:16:35.890842 [debug] [Thread-1 (]: Began running node test.procureiq.unique_stg_vendors_vendor_id.08261cbaab
+[0m13:16:35.894356 [debug] [Thread-3 (]: Finished running node test.procureiq.unique_stg_payments_payment_id.3744510712
+[0m13:16:35.901266 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.procureiq.unique_int_vendor_payment_joined_payment_id.fd08c4d6e2, now test.procureiq.unique_stg_purchase_orders_po_id.b10783048e)
+[0m13:16:35.904880 [debug] [Thread-2 (]: Began running node test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8
+[0m13:16:35.907830 [info ] [Thread-1 (]: 22 of 23 START test unique_stg_vendors_vendor_id ............................... [RUN]
+[0m13:16:35.919457 [debug] [Thread-4 (]: Began compiling node test.procureiq.unique_stg_purchase_orders_po_id.b10783048e
+[0m13:16:35.925365 [info ] [Thread-2 (]: 23 of 23 START test unique_vendor_risk_summary_vendor_id ....................... [RUN]
+[0m13:16:35.931423 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.procureiq.unique_stg_invoices_invoice_id.ecfaf1d4b5, now test.procureiq.unique_stg_vendors_vendor_id.08261cbaab)
+[0m13:16:35.946758 [debug] [Thread-4 (]: Writing injected SQL for node "test.procureiq.unique_stg_purchase_orders_po_id.b10783048e"
+[0m13:16:35.951850 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.procureiq.unique_int_vendor_payment_stats_vendor_id.74920e9e24, now test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8)
+[0m13:16:35.955263 [debug] [Thread-1 (]: Began compiling node test.procureiq.unique_stg_vendors_vendor_id.08261cbaab
+[0m13:16:35.960485 [debug] [Thread-2 (]: Began compiling node test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8
+[0m13:16:35.969881 [debug] [Thread-1 (]: Writing injected SQL for node "test.procureiq.unique_stg_vendors_vendor_id.08261cbaab"
+[0m13:16:35.976059 [debug] [Thread-2 (]: Writing injected SQL for node "test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8"
+[0m13:16:35.983104 [debug] [Thread-4 (]: Timing info for test.procureiq.unique_stg_purchase_orders_po_id.b10783048e (compile): 13:16:35.936943 => 13:16:35.982333
+[0m13:16:35.986924 [debug] [Thread-4 (]: Began executing node test.procureiq.unique_stg_purchase_orders_po_id.b10783048e
+[0m13:16:35.997361 [debug] [Thread-1 (]: Timing info for test.procureiq.unique_stg_vendors_vendor_id.08261cbaab (compile): 13:16:35.963519 => 13:16:35.996698
+[0m13:16:35.995971 [debug] [Thread-4 (]: Writing runtime sql for node "test.procureiq.unique_stg_purchase_orders_po_id.b10783048e"
+[0m13:16:36.001300 [debug] [Thread-1 (]: Began executing node test.procureiq.unique_stg_vendors_vendor_id.08261cbaab
+[0m13:16:36.005419 [debug] [Thread-2 (]: Timing info for test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8 (compile): 13:16:35.971968 => 13:16:36.004724
+[0m13:16:36.019147 [debug] [Thread-1 (]: Writing runtime sql for node "test.procureiq.unique_stg_vendors_vendor_id.08261cbaab"
+[0m13:16:36.023552 [debug] [Thread-2 (]: Began executing node test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8
+[0m13:16:36.037682 [debug] [Thread-2 (]: Writing runtime sql for node "test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8"
+[0m13:16:36.044154 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.unique_stg_purchase_orders_po_id.b10783048e"
+[0m13:16:36.046195 [debug] [Thread-4 (]: On test.procureiq.unique_stg_purchase_orders_po_id.b10783048e: BEGIN
+[0m13:16:36.050070 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:16:36.051375 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.unique_stg_vendors_vendor_id.08261cbaab"
+[0m13:16:36.058543 [debug] [Thread-1 (]: On test.procureiq.unique_stg_vendors_vendor_id.08261cbaab: BEGIN
+[0m13:16:36.059660 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8"
+[0m13:16:36.061974 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:16:36.065930 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:36.066984 [debug] [Thread-2 (]: On test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8: BEGIN
+[0m13:16:36.076862 [debug] [Thread-4 (]: Using postgres connection "test.procureiq.unique_stg_purchase_orders_po_id.b10783048e"
+[0m13:16:36.081613 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:36.082548 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:16:36.086740 [debug] [Thread-4 (]: On test.procureiq.unique_stg_purchase_orders_po_id.b10783048e: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.unique_stg_purchase_orders_po_id.b10783048e"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    po_id as unique_field,
+    count(*) as n_records
+
+from "procureiq"."warehouse"."stg_purchase_orders"
+where po_id is not null
+group by po_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:36.090984 [debug] [Thread-1 (]: Using postgres connection "test.procureiq.unique_stg_vendors_vendor_id.08261cbaab"
+[0m13:16:36.103508 [debug] [Thread-1 (]: On test.procureiq.unique_stg_vendors_vendor_id.08261cbaab: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.unique_stg_vendors_vendor_id.08261cbaab"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    vendor_id as unique_field,
+    count(*) as n_records
+
+from "procureiq"."warehouse"."stg_vendors"
+where vendor_id is not null
+group by vendor_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:36.107036 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:36.109403 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:36.110414 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:36.111416 [debug] [Thread-2 (]: Using postgres connection "test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8"
+[0m13:16:36.115150 [debug] [Thread-4 (]: Timing info for test.procureiq.unique_stg_purchase_orders_po_id.b10783048e (execute): 13:16:35.991025 => 13:16:36.114867
+[0m13:16:36.119953 [debug] [Thread-1 (]: Timing info for test.procureiq.unique_stg_vendors_vendor_id.08261cbaab (execute): 13:16:36.014556 => 13:16:36.119371
+[0m13:16:36.122398 [debug] [Thread-2 (]: On test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8: /* {"app": "dbt", "dbt_version": "1.7.4", "profile_name": "procureiq", "target_name": "dev", "node_id": "test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    vendor_id as unique_field,
+    count(*) as n_records
+
+from "procureiq"."warehouse"."vendor_risk_summary"
+where vendor_id is not null
+group by vendor_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m13:16:36.126009 [debug] [Thread-4 (]: On test.procureiq.unique_stg_purchase_orders_po_id.b10783048e: ROLLBACK
+[0m13:16:36.129304 [debug] [Thread-1 (]: On test.procureiq.unique_stg_vendors_vendor_id.08261cbaab: ROLLBACK
+[0m13:16:36.133509 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m13:16:36.134634 [debug] [Thread-4 (]: On test.procureiq.unique_stg_purchase_orders_po_id.b10783048e: Close
+[0m13:16:36.137094 [debug] [Thread-1 (]: On test.procureiq.unique_stg_vendors_vendor_id.08261cbaab: Close
+[0m13:16:36.139580 [debug] [Thread-2 (]: Timing info for test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8 (execute): 13:16:36.031009 => 13:16:36.139359
+[0m13:16:36.142457 [info ] [Thread-4 (]: 21 of 23 PASS unique_stg_purchase_orders_po_id ................................. [[32mPASS[0m in 0.24s]
+[0m13:16:36.146210 [info ] [Thread-1 (]: 22 of 23 PASS unique_stg_vendors_vendor_id ..................................... [[32mPASS[0m in 0.22s]
+[0m13:16:36.150698 [debug] [Thread-2 (]: On test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8: ROLLBACK
+[0m13:16:36.154695 [debug] [Thread-4 (]: Finished running node test.procureiq.unique_stg_purchase_orders_po_id.b10783048e
+[0m13:16:36.157886 [debug] [Thread-1 (]: Finished running node test.procureiq.unique_stg_vendors_vendor_id.08261cbaab
+[0m13:16:36.162194 [debug] [Thread-2 (]: On test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8: Close
+[0m13:16:36.175067 [info ] [Thread-2 (]: 23 of 23 PASS unique_vendor_risk_summary_vendor_id ............................. [[32mPASS[0m in 0.22s]
+[0m13:16:36.178891 [debug] [Thread-2 (]: Finished running node test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8
+[0m13:16:36.184073 [debug] [MainThread]: Using postgres connection "master"
+[0m13:16:36.187475 [debug] [MainThread]: On master: BEGIN
+[0m13:16:36.190869 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:16:36.198751 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m13:16:36.201292 [debug] [MainThread]: On master: COMMIT
+[0m13:16:36.205548 [debug] [MainThread]: Using postgres connection "master"
+[0m13:16:36.208229 [debug] [MainThread]: On master: COMMIT
+[0m13:16:36.210915 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m13:16:36.213292 [debug] [MainThread]: On master: Close
+[0m13:16:36.216150 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:16:36.220448 [debug] [MainThread]: Connection 'test.procureiq.unique_stg_vendors_vendor_id.08261cbaab' was properly closed.
+[0m13:16:36.223926 [debug] [MainThread]: Connection 'test.procureiq.unique_vendor_risk_summary_vendor_id.5ed68a3be8' was properly closed.
+[0m13:16:36.226478 [debug] [MainThread]: Connection 'test.procureiq.unique_stg_payments_payment_id.3744510712' was properly closed.
+[0m13:16:36.228962 [debug] [MainThread]: Connection 'test.procureiq.unique_stg_purchase_orders_po_id.b10783048e' was properly closed.
+[0m13:16:36.232101 [info ] [MainThread]: 
+[0m13:16:36.235676 [info ] [MainThread]: Finished running 23 tests in 0 hours 0 minutes and 2.36 seconds (2.36s).
+[0m13:16:36.245379 [debug] [MainThread]: Command end result
+[0m13:16:36.308038 [info ] [MainThread]: 
+[0m13:16:36.312853 [info ] [MainThread]: [33mCompleted with 1 warning:[0m
+[0m13:16:36.316626 [info ] [MainThread]: 
+[0m13:16:36.321300 [warn ] [MainThread]: [33mWarning in test assert_days_late_in_range (tests/assert_days_late_in_range.sql)[0m
+[0m13:16:36.325353 [warn ] [MainThread]: Got 175 results, configured to warn if != 0
+[0m13:16:36.330378 [info ] [MainThread]: 
+[0m13:16:36.334935 [info ] [MainThread]:   compiled Code at target/compiled/procureiq/tests/assert_days_late_in_range.sql
+[0m13:16:36.338261 [info ] [MainThread]: 
+[0m13:16:36.341014 [info ] [MainThread]: Done. PASS=22 WARN=1 ERROR=0 SKIP=0 TOTAL=23
+[0m13:16:36.344063 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 3.677074, "process_user_time": 3.447863, "process_kernel_time": 0.441421, "process_mem_max_rss": "133640", "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m13:16:36.346534 [debug] [MainThread]: Command `dbt test` succeeded at 13:16:36.346288 after 3.68 seconds
+[0m13:16:36.349166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a38a3e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a382c390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7152a351a310>]}
+[0m13:16:36.351720 [debug] [MainThread]: Flushing usage events
