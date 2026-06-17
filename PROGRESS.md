@@ -63,13 +63,24 @@ Result: PASS=22 WARN=1 ERROR=0 — warning is expected (175 dormant-then-burst a
 
 ---
 
-## Phase 4 — ML Layer ⏳ PENDING
+## Phase 4 — ML Layer 🔄 IN PROGRESS
 **Goal:** Models trained, tracked in MLflow, scores in warehouse
 
-- [ ] `ml/train_anomaly.py`
-- [ ] `ml/train_risk.py`
-- [ ] `ml/score.py`
-- [ ] `ml/explain.py`
+- [x] `ml/train_anomaly.py` — IsolationForest trained, v1 → Production ✓
+- [x] `ml/train_risk.py` — RandomForest trained, v1 → Production ✓
+- [ ] `ml/score.py` — errored, needs fix next session
+- [ ] `ml/explain.py` — not run yet (runs after score.py works)
+
+**Where we stopped (2026-06-14):**
+- Both models registered and in Production in MLflow (localhost:5000 → Models tab)
+- `score.py` threw an error — paste the error at start of next session to fix
+- `explain.py` not attempted yet
+
+**docker-compose fix applied this session:**
+- Switched MLflow from named volume to bind mount `./mlflow/`
+- Same bind mount added to Airflow containers — fixes `PermissionError: /mlflow`
+
+**Resume trigger:** *"Continue ProcureIQ — Phase 4 in progress, score.py errored, let's fix it"*
 
 ---
 

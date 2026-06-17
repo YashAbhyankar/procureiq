@@ -18,6 +18,8 @@ x-airflow-common: &airflow-common
     PROCUREIQ_DB_URL: postgresql+psycopg2://procureiq:${POSTGRES_PASSWORD}@postgres/procureiq
     # Needed by dbt profiles.yml ({{ env_var('POSTGRES_PASSWORD') }})
     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    # MLflow tracking — ML scripts log runs and load models via this URI
+    MLFLOW_TRACKING_URI: http://mlflow:5000
     # LLM provider config — passed through from .env
     LLM_PROVIDER: ${LLM_PROVIDER:-groq}
     GROQ_API_KEY: ${GROQ_API_KEY:-}
@@ -33,6 +35,8 @@ x-airflow-common: &airflow-common
     - ./llm:/opt/llm
     - ./ingestion:/opt/ingestion
     - ./data:/opt/data
+    # Shared with MLflow container — Airflow writes model artifacts here directly
+    - ./mlflow:/mlflow
   networks:
     - procureiq_net
   depends_on:
@@ -123,7 +127,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - mlflow_data:/mlflow
+      - ./mlflow:/mlflow
     networks:
       - procureiq_net
 
@@ -151,4 +155,3 @@ networks:
 
 volumes:
   postgres_data:
-  mlflow_data:
