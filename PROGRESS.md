@@ -63,53 +63,66 @@ Result: PASS=22 WARN=1 ERROR=0 — warning is expected (175 dormant-then-burst a
 
 ---
 
-## Phase 4 — ML Layer 🔄 IN PROGRESS
+## Phase 4 — ML Layer ✅ DONE
 **Goal:** Models trained, tracked in MLflow, scores in warehouse
 
 - [x] `ml/train_anomaly.py` — IsolationForest trained, v1 → Production ✓
 - [x] `ml/train_risk.py` — RandomForest trained, v1 → Production ✓
-- [ ] `ml/score.py` — errored, needs fix next session
-- [ ] `ml/explain.py` — not run yet (runs after score.py works)
+- [x] `ml/score.py` — 505 payments flagged, 500 vendors scored ✓
+- [x] `ml/explain.py` — SHAP values for 31 high-risk vendors written to warehouse ✓
 
-**Where we stopped (2026-06-14):**
-- Both models registered and in Production in MLflow (localhost:5000 → Models tab)
-- `score.py` threw an error — paste the error at start of next session to fix
-- `explain.py` not attempted yet
-
-**docker-compose fix applied this session:**
-- Switched MLflow from named volume to bind mount `./mlflow/`
-- Same bind mount added to Airflow containers — fixes `PermissionError: /mlflow`
-
-**Resume trigger:** *"Continue ProcureIQ — Phase 4 in progress, score.py errored, let's fix it"*
+**Fixes applied (2026-06-20):**
+- `score.py`: replaced `ON CONFLICT` upsert with TRUNCATE + plain INSERT (no unique constraint on payment_id)
+- `score.py` + `explain.py`: replaced `engine.connect()` + `conn.commit()` with `engine.begin()` (SQLAlchemy 1.x API)
+- `explain.py`: SHAP returns 3D ndarray `(n_samples, n_features, n_classes)` in this version — fixed extraction to `shap_vals[:, :, high_idx]`
 
 ---
 
-## Phase 5 — Airflow DAG ⏳ PENDING
+## Phase 5 — Airflow DAG ✅ DONE
 **Goal:** Full DAG runs end-to-end on manual trigger
 
-- [ ] `airflow/dags/procureiq_dag.py`
-- [ ] All 6 tasks green on manual trigger
+- [x] `airflow/dags/procureiq_dag.py` — 7 tasks, schedule `0 6 * * *`
+- [x] All 7 tasks green on manual trigger (clean run after full reset)
+
+**Fixes applied (2026-06-21):**
+- Dropped stale `stg_invoices__dbt_backup` and `stg_vendors__dbt_backup` relations left by previous interrupted dbt run
+- Verified clean end-to-end run after `docker-compose down -v` reset
 
 ---
 
-## Phase 6 — LLM Digest ⏳ PENDING
+## Phase 6 — LLM Digest ✅ DONE
 **Goal:** Narrative written to `warehouse.llm_risk_digest`
 
-- [ ] `llm/digest.py`
-- [ ] Groq provider tested and working
+- [x] `llm/digest.py` — full implementation (fetch → prompt → LLM → DB write)
+- [x] Groq provider tested and working (`llama-3.3-70b-versatile`)
+- [x] Digest saved to `warehouse.llm_risk_digest` — verified end-to-end
+
+**Design:** OpenAI SDK used for Groq + OpenRouter (both OpenAI-compatible). Anthropic SDK used for Claude. `LLM_PROVIDER` env var dispatches between the three. SHAP values embedded in prompt so LLM explains *why* vendors are risky, not just that they are.
+
+**Note:** `docker-compose restart` does NOT pick up `.env` changes — must use `docker-compose up -d --force-recreate` to inject updated keys into running containers.
 
 ---
 
-## Phase 7 — Streamlit Frontend ⏳ PENDING
+## Phase 7 — Streamlit Frontend ✅ DONE
 **Goal:** localhost:8501 — all 3 pages live with real data
 
-- [ ] `frontend/app.py`
-- [ ] `frontend/Dockerfile`
+- [x] `frontend/app.py` — 3 pages: Risk Dashboard, Payment Anomalies, LLM Digest
+- [x] `frontend/Dockerfile` — pinned `httpx==0.27.2` to fix openai/httpx version conflict
+- [x] Risk Dashboard: 5 metric cards, risk distribution bar, risk vs days-late scatter, SHAP attribution chart per vendor, high-risk table
+- [x] Payment Anomalies: 4 metric cards, anomaly type bar, flagged payments over time, filterable table
+- [x] LLM Digest: latest digest card, history expander, multi-turn chat with 6 starter chips
+- [x] Chat: full conversation history passed as messages array (multi-turn), all 31 high-risk vendors in context, vendor deep-dive on name mention, pipeline + SHAP semantics in system prompt
+
+**Fixes applied:**
+- `httpx==0.27.2` pinned — `openai==1.23.2` breaks with `httpx>=0.28` (dropped `proxies` kwarg)
+- LLM env vars added to Streamlit service in `docker-compose.yml` (were only in Airflow)
+- `docker-compose restart` does not reload `.env` — must use `up -d --force-recreate`
 
 ---
 
-## Phase 8 — README & GitHub Polish ⏳ PENDING
+## Phase 8 — README & GitHub Polish ✅ DONE
 **Goal:** Repo ready to share with hiring managers
 
-- [ ] `README.md` (with real screenshots)
+- [x] `README.md` — architecture diagram, tech stack, quick start, pipeline walkthrough, design decisions
+- [ ] Add real screenshots to README (Risk Dashboard, Payment Anomalies, LLM Digest + Chat)
 - [ ] Final push to GitHub

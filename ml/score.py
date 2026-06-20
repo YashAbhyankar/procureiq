@@ -108,17 +108,13 @@ def main():
         .rename(columns={"anomaly_score": "vendor_anomaly_score"})
     )
 
-    # Bulk-insert flagged rows (dbt already cleared the table this run)
-    with engine.connect() as conn:
+    with engine.begin() as conn:
+        conn.execute(text("TRUNCATE warehouse.payment_anomaly_flags"))
         for _, row in flagged.iterrows():
             conn.execute(text("""
                 INSERT INTO warehouse.payment_anomaly_flags
                     (payment_id, vendor_id, payment_date, amount, anomaly_score, anomaly_type)
                 VALUES (:pid, :vid, :pdate, :amt, :score, :atype)
-                ON CONFLICT (payment_id) DO UPDATE SET
-                    anomaly_score = EXCLUDED.anomaly_score,
-                    anomaly_type  = EXCLUDED.anomaly_type,
-                    flagged_at    = NOW()
             """), {
                 "pid":   row["payment_id"],
                 "vid":   row["vendor_id"],
@@ -127,7 +123,6 @@ def main():
                 "score": float(row["anomaly_score"]),
                 "atype": row["anomaly_type"],
             })
-        conn.commit()
     print(f"  ✓ {len(flagged):,} rows → warehouse.payment_anomaly_flags")
 
     # ── Vendor risk scoring ───────────────────────────────────────────────────
@@ -150,7 +145,7 @@ def main():
 
     print(f"  Risk distribution: {pd.Series(risk_labels).value_counts().to_dict()}")
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
         for idx, row in vend_df.iterrows():
             conn.execute(text("""
                 UPDATE warehouse.vendor_risk_summary SET
@@ -165,7 +160,6 @@ def main():
                 "rl":  str(risk_labels[idx]),
                 "as_": float(row["vendor_anomaly_score"]),
             })
-        conn.commit()
     print(f"  ✓ {len(vend_df):,} vendors updated in warehouse.vendor_risk_summary")
     print("\nScoring complete.")
 
