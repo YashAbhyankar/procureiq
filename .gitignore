@@ -29,3 +29,9 @@ airflow/logs/
 .DS_Store
 *.swp
 Thumbs.db
+
+# Claude Code internal files
+.claude/
+
+# Scratch files
+chat.txt

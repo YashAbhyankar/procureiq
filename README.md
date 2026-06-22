@@ -41,6 +41,19 @@ Built to demonstrate a production-style analytics pipeline running entirely on l
 
 ---
 
+## Screenshots
+
+### Risk Dashboard
+![Risk Dashboard](docs/screenshots/risk_dashboard.png)
+
+### Payment Anomalies
+![Payment Anomalies](docs/screenshots/payment_anomalies.png)
+
+### LLM Digest & Chat
+![LLM Digest and Chat](docs/screenshots/llm_digest.png)
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
